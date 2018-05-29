@@ -20,5 +20,5 @@ Machine Learning for Hidden Physics and Partial Differential Equations
 
 * [Using pyGPs (has limitations)](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/kh/Heat_Equation_with_pyGPs.ipynb)
 * [with the Backward Euler scheme](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/kh/heat_eqn_numerical_gp.ipynb)
-* [Non-homogeneous problem](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/kh/heat_eqn_non_linear_numerical_gp.ipynb)
+* [Non-homogeneous problem](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/kh/heat_eqn_non_homo_numerical_gp.ipynb)
 * [Using 2D kernel](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/kh/heat_eqn.ipynb)
