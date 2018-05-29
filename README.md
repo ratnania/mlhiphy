@@ -6,6 +6,8 @@ Machine Learning for Hidden Physics and Partial Differential Equations
 
 * [A simple Gaussian Process](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/kh/simple_gp.ipynb)
 * [Using pyGPs](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/kh/Simple%20GP%20with%20pyGPs.ipynb)
+* [Using GPy](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/kh/simple_gp_GPy.ipynb)
+
 
 
 ### Using Gaussian processes to estimate parameters in Linear operators
