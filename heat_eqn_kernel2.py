@@ -151,7 +151,7 @@ delta = 0.01
 theta1_range = np.arange(-2, 2, delta)
 theta2_range = np.arange(-2, 2, delta)
 theta1_mesh, theta2_mesh = np.meshgrid(theta1_range, theta2_range)
-nlml_mesh_fn = lambda mesh1, mesh2: nlml(np.array([mesh1, mesh2, 1]), t, x, y_u, y_f, 1e-7)
+nlml_mesh_fn = lambda mesh1, mesh2: nlml(np.array([mesh1, mesh2, 0]), t, x, y_u, y_f, 1e-7)
 nlml_mesh = np.zeros(theta1_mesh.shape)
 for i in range(nlml_mesh.shape[0]):
     for j in range(nlml_mesh.shape[1]):
