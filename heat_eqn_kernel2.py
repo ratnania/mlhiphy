@@ -20,6 +20,7 @@ import numpy as np
 import sympy as sp
 from scipy.optimize import minimize
 import matplotlib.pyplot as plt
+import pickle
 
 
 # In[2]:
@@ -110,7 +111,7 @@ def kuf(t, x, theta1, theta2, p):
 # In[34]:
 
 def nlml(params, t, x, y1, y2, s):
-    # params = np.exp(params)
+    params = np.exp(params)
     K = np.block([
         [
             kuu(t, x, params[0], params[1]) + s*np.identity(x.size),
@@ -138,6 +139,7 @@ def minimize_restarts(t, x, y_u, y_f, n = 10):
     return min(filtered_results, key = lambda x: x.fun)
 
 
+m = minimize_restarts(t, x, y_u, y_f, 20)
 
 # ### Analysis
 # 
@@ -156,30 +158,7 @@ for i in range(nlml_mesh.shape[0]):
         nlml_mesh[i][j] = nlml_mesh_fn(theta1_mesh[i][j], theta2_mesh[i][j])
 
 
-# In[ ]:
 
-
-
-
-# In[60]:
-
-plt.figure()
-CS = plt.contour(theta1_mesh, theta2_mesh, nlml_mesh, np.arange(-5,4))
-plt.clabel(CS, inline=1, fontsize=10)
-plt.savefig("heat_eq_param_space_exp.pdf")
-plt.show()
-
-
-# In[61]:
-
-plt.figure()
-CS = plt.contour(np.exp(theta1_mesh), np.exp(theta2_mesh), nlml_mesh, np.arange(-5,4))
-plt.clabel(CS, inline=1, fontsize=10)
-plt.savefig("heat_eq_param_space.pdf")
-plt.show()
-
-
-# In[ ]:
-
-
-
+heat_data = {"theta1":theta1_mesh, "theta2":theta2_mesh, "nlml":nlml_mesh, "min":m}
+with open("heat_data_exp.pkl", 'wb') as output:
+    pickle.dump(heat_data, output, -1)
