@@ -9,6 +9,8 @@ Welcome to TUM-DI-LAB's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+   report
 
 
 
