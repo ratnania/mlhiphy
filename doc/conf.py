@@ -138,7 +138,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'TUM-DI-LAB.tex', u'TUM-DI-LAB Documentation',
+    (master_doc, 'TUM-DI-LAB.tex', u'TUM-DI-LAB Report',
      u'K. Harsha, A. Grundner, K. Wang', 'manual'),
 ]
 
@@ -148,7 +148,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'tum-di-lab', u'TUM-DI-LAB Documentation',
+    (master_doc, 'tum-di-lab', u'TUM-DI-LAB report',
      [author], 1)
 ]
 
@@ -159,7 +159,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'TUM-DI-LAB', u'TUM-DI-LAB Documentation',
+    (master_doc, 'TUM-DI-LAB', u'TUM-DI-LAB report',
      author, 'TUM-DI-LAB', 'One line description of project.',
      'Miscellaneous'),
 ]
