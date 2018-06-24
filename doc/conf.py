@@ -174,3 +174,4 @@ texinfo_documents = [
 
 
 
+nbsphinx_timeout = 600

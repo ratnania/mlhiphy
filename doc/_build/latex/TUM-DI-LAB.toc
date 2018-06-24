@@ -1,10 +1,9 @@
 \select@language {english}
 \contentsline {chapter}{\numberline {1}Introduction to Gaussian process}{1}{chapter.1}
-\contentsline {chapter}{\numberline {2}Linear operators on GPs}{3}{chapter.2}
-\contentsline {chapter}{\numberline {3}Simple example of a Gaussian process}{5}{chapter.3}
+\contentsline {chapter}{\numberline {2}Simple example of a Gaussian process}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}Linear operators on GPs}{5}{chapter.3}
 \contentsline {chapter}{\numberline {4}Parameter estimation for a linear operator using Gaussian processes}{7}{chapter.4}
 \contentsline {section}{\numberline {4.1}step 1: simulate data}{7}{section.4.1}
 \contentsline {section}{\numberline {4.2}step 2: create covariance matrix}{8}{section.4.2}
-\contentsline {section}{\numberline {4.3}step 3: define negative log marginal likelihood}{10}{section.4.3}
-\contentsline {section}{\numberline {4.4}step 4: optimise hyperparameters}{10}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Using pyGPs (Arthur\IeC {\textquoteright }s Idea)}{11}{subsection.4.4.1}
+\contentsline {section}{\numberline {4.3}step 3: define negative log marginal likelihood}{9}{section.4.3}
+\contentsline {section}{\numberline {4.4}step 4: optimise hyperparameters}{9}{section.4.4}

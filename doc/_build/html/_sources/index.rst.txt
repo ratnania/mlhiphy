@@ -11,16 +11,12 @@ Welcome to TUM-DI-LAB's documentation!
    :maxdepth: 2
    
    report/*
-   notebooks/simple_gp/simple_gp
-   notebooks/par_est/par_est
    
    :caption: Contents:
 
+   
 
 
-
-
-Parameter estimation for PDEs
 
 Limitations of available tools
 
