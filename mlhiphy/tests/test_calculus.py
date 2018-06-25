@@ -12,11 +12,11 @@ from sympy import preorder_traversal
 from sympy import diff
 
 
-from calculus   import Constant
-from calculus import (dx, dy, dz)
-from calculus import LinearOperator
-from calculus import Field
-from calculus import _generic_ops, _partial_derivatives
+from mlhiphy.calculus   import Constant
+from mlhiphy.calculus import (dx, dy, dz)
+from mlhiphy.calculus import LinearOperator
+from mlhiphy.calculus import Field
+from mlhiphy.calculus import _generic_ops, _partial_derivatives
 
 # ...
 def test_0():

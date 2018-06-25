@@ -1,8 +1,8 @@
 # coding: utf-8
-from calculus import dx
-from calculus import Constant
-from calculus import Unknown
-from calculus import _partial_derivatives
+from mlhiphy.calculus import dx
+from mlhiphy.calculus import Constant
+from mlhiphy.calculus import Unknown
+from mlhiphy.calculus import _partial_derivatives
 
 from sympy import preorder_traversal
 from sympy import Derivative

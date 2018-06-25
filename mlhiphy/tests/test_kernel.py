@@ -1,8 +1,8 @@
 # coding: utf-8
-from calculus import dx
-from calculus import Constant
-from calculus import Unknown
-from kernels import compute_kernel, generic_kernel
+from mlhiphy.calculus import dx
+from mlhiphy.calculus import Constant
+from mlhiphy.calculus import Unknown
+from mlhiphy.kernels import compute_kernel, generic_kernel
 
 from sympy import expand
 from sympy import Lambda
