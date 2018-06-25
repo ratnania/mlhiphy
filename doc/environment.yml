@@ -6,6 +6,10 @@ dependencies:
   - pandoc
   - nbconvert
   - ipykernel
+  - numpy
+  - sympy
+  - scipy
+  - matplotlib
   - pip:
     - nbsphinx
     - git+https://github.com/vidartf/nbsphinx-link
