@@ -8,3 +8,4 @@ dependencies:
   - ipykernel
   - pip:
     - nbsphinx
+    - git+https://github.com/vidartf/nbsphinx-link
