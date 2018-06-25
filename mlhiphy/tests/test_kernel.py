@@ -14,13 +14,14 @@ x, xi, xj = symbols('x xi xj')
 
 alpha = Constant('alpha')
 beta  = Constant('beta')
+theta  = Constant('theta')
 
 u = Unknown('u')
-expr = alpha * u + dx(u)
+expr = alpha * u + dx(u) #+ dx(dx(u))
 
 print('> generic_kernel := ', expand(generic_kernel(expr, u, (xi, xj))))
 
-xi, xj, theta = symbols('xi xj theta')
+xi, xj = symbols('xi xj')
 kuu = theta * exp(-0.5*((xi - xj)**2))
 
 kuf = compute_kernel(expr, kuu, xi)

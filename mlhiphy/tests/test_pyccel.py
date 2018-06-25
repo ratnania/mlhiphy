@@ -42,7 +42,8 @@ def write_code(name, code, ext='py', folder='.pyccel'):
         f.write(line)
     f.close()
 
-def compile_kernel(name, expr, kuu, args, export_pyfile=True):
+def compile_kernel(name, expr, kuu, args,
+                   export_pyfile=True, native=True):
     from sympy import IndexedBase
 
     if not isinstance(args, (tuple, list)):
@@ -99,30 +100,28 @@ def compile_kernel(name, expr, kuu, args, export_pyfile=True):
         write_code(name, code, ext='py', folder='.pyccel')
     # ...
 
+    # ...
     from pyccel.epyccel import epyccel
-    kernel = epyccel(code, header, name=name)
-
-    # ... TODO debug
-#    _kernel = epyccel(code, header, name=name)
-#
-#    from mlhiphy.templates import template_main
-#    template = template_main.format(__KERNEL_NAME__=name,
-#                                    __PARAMS__=params_str)
-#    kernel = eval(template)
+    _kernel = epyccel(code, header, name=name)
+    if not native:
+        return _kernel
     # ...
 
-    return kernel
+    # ...
+    from mlhiphy.templates import template_main
+    template = template_main.format(__KERNEL_NAME__=name,
+                                    __PARAMS__=params_str)
+    d = {}
+#    l = {'_kernel': _kernel}
+    exec(template) in d
+    return eval(name)
+    # ...
 
-_kff = compile_kernel('kff', expr, kuu, (xi, xj))
-from numpy import zeros
-def kff(x, *args):
-    n = x.size
-    k = zeros((n,n), order='F')
-    args = list(args) + [k]
-    return _kff(n, x, *args)
+kff = compile_kernel('kff', expr, kuu, (xi, xj))
 
 from numpy import linspace
 x = linspace(0., 1., 100)
 alpha = 0.1
 theta = 0.4
+
 y = kff(x, alpha, theta)

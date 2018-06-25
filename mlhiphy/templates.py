@@ -8,8 +8,7 @@ def {__KERNEL_NAME__}(x, {__PARAMS__}):
     n = x.size
     from numpy import zeros
     k = zeros((n,n), order='F')
-    args = list(args) + [k]
-    return _kernel(n, x, *args)
+    return _kernel(n, x, {__PARAMS__}, k)
 """
 
 # .............................................
