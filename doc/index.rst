@@ -8,16 +8,14 @@ Welcome to TUM-DI-LAB's documentation!
 
 .. toctree::
    :maxdepth: 2
-   
-   report/main
-   
    :caption: Contents:
 
+   introduction
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   
+.. Indices and tables
+.. ==================
+.. 
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
