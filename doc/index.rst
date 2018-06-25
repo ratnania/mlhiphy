@@ -10,11 +10,10 @@ Welcome to TUM-DI-LAB's documentation!
    :glob:
    :maxdepth: 2
    
-   report/*
    
    :caption: Contents:
 
-   
+   report/*
 
 
 
