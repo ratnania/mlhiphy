@@ -7,17 +7,25 @@ Welcome to TUM-DI-LAB's documentation!
 ======================================
 
 .. toctree::
+   :glob:
    :maxdepth: 2
    
-   testfolder/hello
    
    :caption: Contents:
 
-   
+   report/*
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+
+Limitations of available tools
+
+Linear PDEs
+
+Non-linear PDEs
+
+PDEs without discretization
+
+Results and Analysis
+
+Conclusion
+
