@@ -1,1 +1,0 @@
-Search.setIndex({docnames:["index","testfolder/hello"],envversion:53,filenames:["index.rst","testfolder\\hello.rst"],objects:{},objnames:{},objtypes:{},terms:{index:0,modul:0,page:0,search:0,uhhj:1},titles:["Welcome to TUM-DI-LAB\u2019s documentation!","&lt;no title&gt;"],titleterms:{document:0,indic:0,lab:0,tabl:0,tum:0,welcom:0}})
