@@ -21,8 +21,19 @@ def generic_kernel(expr, func, y, args=None):
         _derivatives = [dx]
     elif isinstance(y, Tuple):
         _derivatives = _partial_derivatives[:len(y)]
-    else:
+    elif not isinstance(y, (list, tuple)):
         raise TypeError('expecting a Symbol or Tuple')
+
+    _args = []
+    if args:
+        for a in args:
+            if isinstance(a, Symbol):
+                _args += [a]
+            elif isinstance(a, Tuple):
+                _args += [*a]
+            else:
+                raise TypeError('expecting a Symbol or Tuple')
+        args = _args
 
     if isinstance(y, (list, tuple)):
         args = y
@@ -51,7 +62,6 @@ def generic_kernel(expr, func, y, args=None):
 
         for f in func:
             fnew  = Function(f.name)
-            # TODO multi-dim case
             if isinstance(y, Tuple):
                 for d in _derivatives:
                     for D in _derivatives:
@@ -80,30 +90,35 @@ def generic_kernel(expr, func, y, args=None):
 #            print('+ i = ', i)
             op = type(i)
 
-            # ... terms like dx(dx(Derivative(..)))
-            # TODO change this implementation for multi-dim, since we need to
-            # know which partial derivative we are using
-            dof = [a for a in i.args if isinstance(a, _derivatives)]
-            derivs = []
-            for d in dof:
-                derivs += [a for a in d.args if isinstance(a, Derivative)]
-#            print('> derivs = ', derivs)
-            for a in derivs:
-                f = a.expr
-
-                # TODO multi-dim case
-                expr = expr.subs({i: a.diff(y).diff(y)})
-            # ...
+#            # ... terms like dx(dx(Derivative(..)))
+#            # TODO change this implementation for multi-dim, since we need to
+#            # know which partial derivative we are using
+#            dof = [a for a in i.args if isinstance(a, _derivatives)]
+#            derivs = []
+#            for d in dof:
+#                derivs += [a for a in d.args if isinstance(a, Derivative)]
+##            print('> derivs = ', derivs)
+#            for a in derivs:
+#                f = a.expr
+#
+#                # TODO multi-dim case
+#                expr = expr.subs({i: a.diff(y).diff(y)})
+#            # ...
 
             # ... terms like dx(Derivative(..))
             derivs = [a for a in i.args if isinstance(a, Derivative)]
-            # TODO validate
             for a in derivs:
                 f = a.expr
 
-                expr = expr.subs({i: a.diff(y)})
+                if isinstance(y, Tuple):
+                    for d in _derivatives:
+                        i_d = d.grad_index
+                        expr = expr.subs({i: a.diff(y[i_d])})
+                elif isinstance(y, Symbol):
+                    expr = expr.subs({i: a.diff(y)})
             # ...
 
+#        print('done')
         return expr
 
 def compute_kernel(expr, kuu, args):
@@ -120,16 +135,42 @@ def compute_kernel(expr, kuu, args):
     expr = expr.subs({u: kuu})
 
     xi = args[0]
+    scalar = isinstance(xi, Symbol)
+
+    if not scalar:
+        _args = []
+        for a in args:
+            if isinstance(a, Symbol):
+                _args += [a]
+            elif isinstance(a, Tuple):
+                _args += [*a]
+            else:
+                raise TypeError('expecting a Symbol or Tuple')
 
     # must be done before subs on xi and xj
     if len(args) > 1:
         xj = args[1]
-        expr = expr.subs({Derivative(u(xi, xj), xi, xj):
-                          diff(kuu, xi, xj)})
 
-    expr = expr.subs({Derivative(u(*args), xi): diff(kuu, xi)})
+        if scalar:
+            expr = expr.subs({Derivative(u(*args), xi, xj):
+                              diff(kuu, xi, xj)})
+        else:
+            for _xi in xi:
+                for _xj in xj:
+                    expr = expr.subs({Derivative(u(*_args), _xi, _xj):
+                                      diff(kuu, _xi, _xj)})
+
+    if scalar:
+        expr = expr.subs({Derivative(u(*args), xi): diff(kuu, xi)})
+    else:
+        for _xi in xi:
+            expr = expr.subs({Derivative(u(*_args), _xi): diff(kuu, _xi)})
+
     if len(args) > 1:
-        expr = expr.subs({Derivative(u(*args), xj): diff(kuu, xj)})
+        if scalar:
+            expr = expr.subs({Derivative(u(*args), xj): diff(kuu, xj)})
+        else:
+            expr = expr.subs({Derivative(u(*_args), _xj): diff(kuu, _xj)})
 
     # enforce computing the derivatives
     expr = expr.doit()

@@ -51,21 +51,21 @@ def test_2d():
     theta = Constant('theta')
 
     u = Unknown('u')
-    expr = alpha * u + dx(u) + dy(u)
+    expr = u + alpha * dx(u) + beta * dy(u)
 
     print('> generic_kernel := ', expand(generic_kernel(expr, u, Xi)))
     print('> generic_kernel := ', expand(generic_kernel(expr, u, Xj)))
-#    print('> generic_kernel := ', expand(generic_kernel(expr, u, (Xi, Xj))))
+    print('> generic_kernel := ', expand(generic_kernel(expr, u, (Xi, Xj))))
 
-#    kuu = theta * exp(-0.5*((Xi - Xj)**2))
-#
-#    kuf = compute_kernel(expr, kuu, Xi)
-#    kfu = compute_kernel(expr, kuu, Xj)
-#    kff = compute_kernel(expr, kuu, (Xi, Xj))
-#
-#    print('> kuf := ', kuf)
-#    print('> kfu := ', kfu)
-#    print('> kff := ', kff)
+    kuu = theta * exp(-0.5*((xi - xj)**2 + (yi - yj)**2))
+
+    kuf = compute_kernel(expr, kuu, Xi)
+    kfu = compute_kernel(expr, kuu, Xj)
+    kff = compute_kernel(expr, kuu, (Xi, Xj))
+
+    print('> kuf := ', kuf)
+    print('> kfu := ', kfu)
+    print('> kff := ', kff)
 
 #############################################
 if __name__ == '__main__':
