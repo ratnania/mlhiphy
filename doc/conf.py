@@ -176,3 +176,4 @@ texinfo_documents = [
 
 
 nbsphinx_timeout = 600
+nbsphinx_allow_errors = True
