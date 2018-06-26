@@ -14,11 +14,15 @@ x, xi, xj = symbols('x xi xj')
 
 alpha = Constant('alpha')
 beta  = Constant('beta')
-theta  = Constant('theta')
+mu    = Constant('mu')
+theta = Constant('theta')
 
 u = Unknown('u')
-expr = alpha * u + dx(u) #+ dx(dx(u))
+#expr = alpha * u + dx(u)
+expr = mu * u + alpha * dx(u) + beta * dx(dx(u))
 
+print('> generic_kernel := ', expand(generic_kernel(expr, u, xi)))
+print('> generic_kernel := ', expand(generic_kernel(expr, u, xj)))
 print('> generic_kernel := ', expand(generic_kernel(expr, u, (xi, xj))))
 
 xi, xj = symbols('xi xj')

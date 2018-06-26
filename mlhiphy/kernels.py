@@ -40,18 +40,41 @@ def generic_kernel(expr, func, y, args=None):
 
         for f in func:
             fnew  = Function(f.name)
+            # TODO multi-dim case
+            expr = expr.subs({dx(dx(f)): fnew(*args).diff(y).diff(y)})
             expr = expr.subs({dx(f): fnew(*args).diff(y)})
 
+        # we update terms from the highest order derivative, otherwise it will
+        # not work
         ops = [a for a in preorder_traversal(expr) if isinstance(a, _partial_derivatives)]
         for i in ops:
             # if i = dx(u) then type(i) is dx
+#            print('+ i = ', i)
             op = type(i)
+
+            # ... terms like dx(dx(Derivative(..)))
+            # TODO change this implementation for multi-dim, since we need to
+            # know which partial derivative we are using
+            dof = [a for a in i.args if isinstance(a, _partial_derivatives)]
+            derivs = []
+            for d in dof:
+                derivs += [a for a in d.args if isinstance(a, Derivative)]
+#            print('> derivs = ', derivs)
+            for a in derivs:
+                f = a.expr
+
+                # TODO multi-dim case
+                expr = expr.subs({i: a.diff(y).diff(y)})
+            # ...
+
+            # ... terms like dx(Derivative(..))
             derivs = [a for a in i.args if isinstance(a, Derivative)]
             # TODO validate
             for a in derivs:
                 f = a.expr
 
                 expr = expr.subs({i: a.diff(y)})
+            # ...
 
         return expr
 
@@ -80,4 +103,6 @@ def compute_kernel(expr, kuu, args):
     if len(args) > 1:
         expr = expr.subs({Derivative(u(*args), xj): diff(kuu, xj)})
 
+    # enforce computing the derivatives
+    expr = expr.doit()
     return expr
