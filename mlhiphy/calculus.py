@@ -1,5 +1,7 @@
 # coding: utf-8
 
+# TODO add action of diff operators on sympy known functions
+
 import numpy as np
 
 from sympy.core.sympify import sympify
@@ -205,17 +207,25 @@ class DifferentialOperator(LinearOperator):
 # ...
 class dx(DifferentialOperator):
     coordinate = 'x'
+    grad_index = 0 # index in grad
     pass
 
 class dy(DifferentialOperator):
     coordinate = 'y'
+    grad_index = 1 # index in grad
     pass
 
 class dz(DifferentialOperator):
     coordinate = 'z'
+    grad_index = 2 # index in grad
     pass
 
-_partial_derivatives = (dx, dy, dz)
+class dt(DifferentialOperator):
+    coordinate = 't'
+    grad_index = None # index in grad
+    pass
+
+_partial_derivatives = (dx, dy, dz, dt)
 # ...
 
 # ...
