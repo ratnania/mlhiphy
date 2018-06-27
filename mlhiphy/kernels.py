@@ -6,7 +6,7 @@ from mlhiphy.calculus import _partial_derivatives
 
 from sympy import preorder_traversal
 from sympy import Derivative
-from sympy import Add
+from sympy import Add, Mul
 from sympy import expand
 from sympy import Lambda
 from sympy import symbols
@@ -18,9 +18,9 @@ from sympy import Symbol
 
 def generic_kernel(expr, func, y, args=None):
     if isinstance(y, Symbol):
-        _derivatives = [dx]
+        _derivatives = tuple([dx])
     elif isinstance(y, Tuple):
-        _derivatives = _partial_derivatives[:len(y)]
+        _derivatives = tuple(_partial_derivatives[:len(y)])
     elif not isinstance(y, (list, tuple)):
         raise TypeError('expecting a Symbol or Tuple')
 
@@ -45,15 +45,22 @@ def generic_kernel(expr, func, y, args=None):
     else:
         if isinstance(func, Unknown):
             func = [func]
-        elif isinstance(func, Add):
+        elif isinstance(func, (Add, Mul)):
             fn = [i for i in func.free_symbols if isinstance(i, Unknown)]
             if not(len(fn) == 1):
                 raise ValueError('expecting only one unknown')
 
             expr = expr.subs({fn[0]: func})
             func = fn
+        elif isinstance(func, Derivative):
+            fn = [i for i in expr.free_symbols if isinstance(i, Unknown)]
+            if not(len(fn) == 1):
+                raise ValueError('expecting only one unknown')
+            u = fn[0]
+            expr = expr.subs({u: func})
+            func = [u]
         else:
-            raise NotImplemented('type = ', type(func))
+            raise NotImplementedError('type = ', type(func), func)
 
         if not args:
             args = [y]
@@ -82,13 +89,22 @@ def generic_kernel(expr, func, y, args=None):
             else:
                 raise TypeError('expecting Tuple or Symbol')
 
+#        print('====')
+#        print(expr)
+#        print(y)
+#        print(args)
+#        print('====')
         # we update terms from the highest order derivative, otherwise it will
         # not work
         ops = [a for a in preorder_traversal(expr) if isinstance(a, _derivatives)]
         for i in ops:
             # if i = dx(u) then type(i) is dx
 #            print('+ i = ', i)
-            op = type(i)
+            if not(len(i.args) == 1):
+                raise ValueError('expecting only one argument for partial derivatives')
+
+            a = i.args[0]
+            d = type(i)
 
 #            # ... terms like dx(dx(Derivative(..)))
 #            # TODO change this implementation for multi-dim, since we need to
@@ -101,21 +117,23 @@ def generic_kernel(expr, func, y, args=None):
 #            for a in derivs:
 #                f = a.expr
 #
-#                # TODO multi-dim case
+##                print('> ', expr)
 #                expr = expr.subs({i: a.diff(y).diff(y)})
+##                print('< ', expr)
 #            # ...
 
             # ... terms like dx(Derivative(..))
-            derivs = [a for a in i.args if isinstance(a, Derivative)]
-            for a in derivs:
+            if isinstance(a, Derivative):
                 f = a.expr
 
                 if isinstance(y, Tuple):
-                    for d in _derivatives:
-                        i_d = d.grad_index
-                        expr = expr.subs({i: a.diff(y[i_d])})
+                    i_d = d.grad_index
+                    expr = expr.subs({i: a.diff(y[i_d])})
+
                 elif isinstance(y, Symbol):
+#                    print('> ', expr)
                     expr = expr.subs({i: a.diff(y)})
+#                    print('< ', expr)
             # ...
 
 #        print('done')
