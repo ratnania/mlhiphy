@@ -3,6 +3,7 @@
 # TODO add action of diff operators on sympy known functions
 
 import numpy as np
+from itertools import groupby
 
 from sympy.core.sympify import sympify
 from sympy.simplify.simplify import simplify
@@ -246,6 +247,35 @@ def find_partial_derivatives(expr):
         return [expr]
 
     return []
+# ...
+
+# ...
+def get_number_derivatives(expr):
+    """
+    returns the number of partial derivatives in expr.
+    this is still an experimental version, and it assumes that expr is of the
+    form d(a) where a is a single atom.
+    """
+    n = 0
+    if isinstance(expr, _partial_derivatives):
+        assert(len(expr.args) == 1)
+
+        n += 1 + get_number_derivatives(expr.args[0])
+    return n
+# ...
+
+# ...
+def sort_partial_derivatives(expr):
+    """returns the partial derivatives of an expression, sorted.
+    """
+    ls = []
+
+    args = find_partial_derivatives(expr)
+    for key, group in groupby(args, lambda x: get_number_derivatives(x)):
+        for a in group:
+            ls.append(a)
+
+    return ls
 # ...
 
 # ...

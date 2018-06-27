@@ -156,9 +156,8 @@ def test_1d():
 
 #    expr = alpha * u
 #    expr = alpha * dx(u)
-    expr = alpha * u + beta * dx(u)
-
-#    expr = mu * u + alpha * dx(u) + beta * dx(dx(u))
+#    expr = alpha * u + beta * dx(u)
+    expr = mu * u + alpha * dx(u) + beta * dx(dx(u))
 
 #    print('> generic_kernel := ', expand(generic_kernel(expr, u, xi)))
 #    print('> generic_kernel := ', expand(generic_kernel(expr, u, xj)))
@@ -187,16 +186,18 @@ def test_2d():
     alpha = Constant('alpha')
     beta  = Constant('beta')
     mu    = Constant('mu')
+    nu    = Constant('nu')
+    zeta    = Constant('zeta')
     theta = Constant('theta')
 
 #    expr = alpha * u
 #    expr = alpha * dx(u)
 #    expr = alpha * dy(u)
 #    expr = alpha * u + beta * dx(u)
-    expr = alpha * u + beta * dy(u)
-
-#    expr = u + alpha * dx(u) + beta * dy(u)
-#    expr = u + alpha * dx(dx(u)) #+ beta * dy(u)
+#    expr = alpha * u + beta * dy(u)
+#    expr = mu * u + alpha * dx(u) + beta * dx(dx(u))
+#    expr = mu * u + alpha * dx(u) + beta * dy(dy(u))
+    expr = mu * u + alpha * dx(u) + beta * dx(dx(u)) + nu * dy(dy(u)) + zeta * dx(dy(u))
 
 #    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xi)))
 #    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xj)))
@@ -226,6 +227,7 @@ def test_3d():
     alpha = Constant('alpha')
     beta  = Constant('beta')
     mu    = Constant('mu')
+    nu    = Constant('nu')
     theta = Constant('theta')
 
 #    expr = alpha * u
@@ -234,10 +236,11 @@ def test_3d():
 #    expr = alpha * dz(u)
 #    expr = alpha * u + beta * dx(u)
 #    expr = alpha * u + beta * dy(u)
-    expr = alpha * u + beta * dz(u)
-
-#    expr = u + alpha * dx(u) + beta * dy(u)
-#    expr = u + alpha * dx(dx(u)) #+ beta * dy(u)
+#    expr = alpha * u + beta * dz(u)
+#    expr = mu * u + alpha * dx(u) + beta * dx(dx(u))
+#    expr = mu * u + alpha * dx(u) + beta * dy(dy(u))
+#    expr = mu * u + alpha * dx(u) + beta * dz(dz(u))
+    expr = mu * u + alpha * dx(u) + beta * dy(dz(u)) + nu * dx(dz(u))
 
 #    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xi)))
 #    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xj)))

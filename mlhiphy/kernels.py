@@ -1,9 +1,11 @@
 # coding: utf-8
+
 from mlhiphy.calculus import dx, dy, dz
 from mlhiphy.calculus import Constant
 from mlhiphy.calculus import Unknown
 from mlhiphy.calculus import _partial_derivatives
 from mlhiphy.calculus import find_partial_derivatives
+from mlhiphy.calculus import sort_partial_derivatives
 
 from sympy import preorder_traversal
 from sympy import Derivative
@@ -42,7 +44,13 @@ def generic_kernel(expr, func, y, args=None):
         for xi in y:
             ej = generic_kernel(expr, ei, xi, args=args)
             ei = ej
-        return ei
+        expr = ei
+
+        # check that there are no partial derivatives in the final expression
+        ops = find_partial_derivatives(expr)
+        assert(len(ops) == 0)
+
+        return expr
     else:
         if isinstance(func, Unknown):
             func = [func]
@@ -103,22 +111,17 @@ def generic_kernel(expr, func, y, args=None):
             else:
                 raise TypeError('expecting Tuple or Symbol')
 
-        # we update terms from the highest order derivative, otherwise it will
-        # not work
-#        ops = [a for a in preorder_traversal(expr) if isinstance(a, _derivatives)]
-        ops = find_partial_derivatives(expr)
+        # partial derivatives must be sorted from high to low
+        ops = sort_partial_derivatives(expr)[::-1]
         for i in ops:
-            # if i = dx(u) then type(i) is dx
+
             if not(len(i.args) == 1):
                 raise ValueError('expecting only one argument for partial derivatives')
 
+            # if i = dx(u) then type(i) is dx
             d = type(i)
-            a = i.args[0]
 
-#            print('+ i = ', i)
-#            print('> a = ', a)
-#            print(expr)
-#            print()
+            a = i.args[0]
 
             # terms like dx(Derivative(..))
             if isinstance(a, Derivative):
