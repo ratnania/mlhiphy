@@ -29,11 +29,11 @@ def test_generic_kernel_1d():
     assert(generic_kernel(dx(u), u, (xi, xj)) == Derivative(Function('u')(xi, xj), xi, xj))
     # ...
 
-#    # ... testing dx(dx(u))
-#    assert(generic_kernel(dx(dx(u)), u, xi) == Derivative(Function('u')(xi), xi, xi))
-#    assert(generic_kernel(dx(dx(u)), u, xj) == Derivative(Function('u')(xj), xj, xj))
-#    assert(generic_kernel(dx(dx(u)), u, (xi, xj)) == Derivative(Function('u')(xi, xj), xi, xi, xj, xj))
-#    # ...
+    # ... testing dx(dx(u))
+    assert(generic_kernel(dx(dx(u)), u, xi) == Derivative(Function('u')(xi), xi, xi))
+    assert(generic_kernel(dx(dx(u)), u, xj) == Derivative(Function('u')(xj), xj, xj))
+    assert(generic_kernel(dx(dx(u)), u, (xi, xj)) == Derivative(Function('u')(xi, xj), xi, xi, xj, xj))
+    # ...
 
 def test_generic_kernel_2d():
     x, xi, xj = symbols('x xi xj')
@@ -74,16 +74,15 @@ def test_generic_kernel_2d():
            Derivative(Function('u')(*Xi, *Xj), yi, yj))
     # ...
 
-#    # ... testing dx(dx(u))
-#    assert(generic_kernel(dx(dx(u)), u, Xi) ==
-#           Derivative(Function('u')(*Xi), xi, xi))
-#
-#    assert(generic_kernel(dx(dx(u)), u, Xj) ==
-#           Derivative(Function('u')(*Xj), xj, xj))
+    # ... testing dx(dx(u))
+    assert(generic_kernel(dx(dx(u)), u, Xi) ==
+           Derivative(Function('u')(*Xi), xi, xi))
 
-#    # TODO not working
-#    assert(generic_kernel(dx(dx(u)), u, (Xi, Xj)) ==
-#           Derivative(Function('u')(*Xi, *Xj), xi, xi, xj, xj))
+    assert(generic_kernel(dx(dx(u)), u, Xj) ==
+           Derivative(Function('u')(*Xj), xj, xj))
+
+    assert(generic_kernel(dx(dx(u)), u, (Xi, Xj)) ==
+           Derivative(Function('u')(*Xi, *Xj), xi, xi, xj, xj))
     # ...
 
 def test_generic_kernel_3d():
@@ -137,16 +136,15 @@ def test_generic_kernel_3d():
            Derivative(Function('u')(*Xi, *Xj), zi, zj))
     # ...
 
-#    # ... testing dx(dx(u))
-#    assert(generic_kernel(dx(dx(u)), u, Xi) ==
-#           Derivative(Function('u')(*Xi), xi, xi))
-#
-#    assert(generic_kernel(dx(dx(u)), u, Xj) ==
-#           Derivative(Function('u')(*Xj), xj, xj))
+    # ... testing dx(dx(u))
+    assert(generic_kernel(dx(dx(u)), u, Xi) ==
+           Derivative(Function('u')(*Xi), xi, xi))
 
-#    # TODO not working
-#    assert(generic_kernel(dx(dx(u)), u, (Xi, Xj)) ==
-#           Derivative(Function('u')(*Xi, *Xj), xi, xi, xj, xj))
+    assert(generic_kernel(dx(dx(u)), u, Xj) ==
+           Derivative(Function('u')(*Xj), xj, xj))
+
+    assert(generic_kernel(dx(dx(u)), u, (Xi, Xj)) ==
+           Derivative(Function('u')(*Xi, *Xj), xi, xi, xj, xj))
     # ...
 
 def test_1d():

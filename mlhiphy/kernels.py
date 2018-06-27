@@ -103,40 +103,36 @@ def generic_kernel(expr, func, y, args=None):
             if not(len(i.args) == 1):
                 raise ValueError('expecting only one argument for partial derivatives')
 
-            a = i.args[0]
             d = type(i)
+            a = i.args[0]
 
-#            # ... terms like dx(dx(Derivative(..)))
-#            # TODO change this implementation for multi-dim, since we need to
-#            # know which partial derivative we are using
-#            dof = [a for a in i.args if isinstance(a, _derivatives)]
-#            derivs = []
-#            for d in dof:
-#                derivs += [a for a in d.args if isinstance(a, Derivative)]
-##            print('> derivs = ', derivs)
-#            for a in derivs:
-#                f = a.expr
-#
-##                print('> ', expr)
-#                expr = expr.subs({i: a.diff(y).diff(y)})
-##                print('< ', expr)
-#            # ...
-
-            # ... terms like dx(Derivative(..))
+            # terms like dx(Derivative(..))
             if isinstance(a, Derivative):
-                f = a.expr
-
                 if isinstance(y, Tuple):
                     i_d = d.grad_index
                     expr = expr.subs({i: a.diff(y[i_d])})
 
                 elif isinstance(y, Symbol):
-#                    print('> ', expr)
                     expr = expr.subs({i: a.diff(y)})
-#                    print('< ', expr)
-            # ...
 
-#        print('done')
+            # terms like dx(dx(Derivative(..)))
+            elif isinstance(a, _derivatives):
+                if not(len(a.args) == 1):
+                    raise ValueError('expecting only one argument for partial derivatives')
+
+                D = type(a)
+                b = a.args[0]
+
+                if isinstance(y, Tuple):
+                    i_d = d.grad_index
+                    i_D = D.grad_index
+                    expr = expr.subs({i: b.diff(y[i_d]).diff(y[i_D])})
+
+                elif isinstance(y, Symbol):
+                    expr = expr.subs({i: b.diff(y).diff(y)})
+            else:
+                raise TypeError('expecting a Derivative or partial derivative')
+
         return expr
 
 def compute_kernel(expr, kuu, args):
