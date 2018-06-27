@@ -1,0 +1,15 @@
+channels:
+  - conda-forge
+dependencies:
+  - python==3.5
+  - sphinx>=1.4
+  - pandoc
+  - nbconvert
+  - ipykernel
+  - numpy
+  - sympy
+  - scipy
+  - matplotlib
+  - pip:
+    - nbsphinx
+    - git+https://github.com/vidartf/nbsphinx-link
