@@ -229,6 +229,26 @@ _partial_derivatives = (dx, dy, dz, dt)
 # ...
 
 # ...
+def find_partial_derivatives(expr):
+    """
+    returns all partial derivative expressions
+    """
+    if isinstance(expr, (Add, Mul)):
+        return find_partial_derivatives(expr.args)
+
+    elif isinstance(expr, (list, tuple)):
+        args = []
+        for a in expr:
+            args += find_partial_derivatives(a)
+        return args
+
+    elif isinstance(expr, _partial_derivatives):
+        return [expr]
+
+    return []
+# ...
+
+# ...
 class DotBasic(Function):
     """
 

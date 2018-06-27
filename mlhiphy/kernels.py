@@ -3,6 +3,7 @@ from mlhiphy.calculus import dx, dy, dz
 from mlhiphy.calculus import Constant
 from mlhiphy.calculus import Unknown
 from mlhiphy.calculus import _partial_derivatives
+from mlhiphy.calculus import find_partial_derivatives
 
 from sympy import preorder_traversal
 from sympy import Derivative
@@ -45,13 +46,18 @@ def generic_kernel(expr, func, y, args=None):
     else:
         if isinstance(func, Unknown):
             func = [func]
+
         elif isinstance(func, (Add, Mul)):
-            fn = [i for i in func.free_symbols if isinstance(i, Unknown)]
+            fn = [i for i in preorder_traversal(expr) if isinstance(i, Unknown)]
+            # make it unique
+            fn = set(fn)
+            fn = list(fn)
             if not(len(fn) == 1):
                 raise ValueError('expecting only one unknown')
 
             expr = expr.subs({fn[0]: func})
             func = fn
+
         elif isinstance(func, Derivative):
             fn = [i for i in expr.free_symbols if isinstance(i, Unknown)]
             if not(len(fn) == 1):
@@ -60,9 +66,12 @@ def generic_kernel(expr, func, y, args=None):
             u = fn[0]
             expr = expr.subs({u: func})
             func = [u]
+
+        # TODO improve
         elif isinstance(func, Function):
             fname = type(func).__name__
             func = [Unknown(fname)]
+
         else:
             raise NotImplementedError('type = ', type(func), func)
 
@@ -94,25 +103,36 @@ def generic_kernel(expr, func, y, args=None):
             else:
                 raise TypeError('expecting Tuple or Symbol')
 
-#        print('====')
-#        print(expr)
-#        print(y)
-#        print(args)
-#        print('====')
         # we update terms from the highest order derivative, otherwise it will
         # not work
-        ops = [a for a in preorder_traversal(expr) if isinstance(a, _derivatives)]
+#        ops = [a for a in preorder_traversal(expr) if isinstance(a, _derivatives)]
+        ops = find_partial_derivatives(expr)
         for i in ops:
             # if i = dx(u) then type(i) is dx
-#            print('+ i = ', i)
             if not(len(i.args) == 1):
                 raise ValueError('expecting only one argument for partial derivatives')
 
             d = type(i)
             a = i.args[0]
 
+#            print('+ i = ', i)
+#            print('> a = ', a)
+#            print(expr)
+#            print()
+
             # terms like dx(Derivative(..))
             if isinstance(a, Derivative):
+                if isinstance(y, Tuple):
+                    i_d = d.grad_index
+                    expr = expr.subs({i: a.diff(y[i_d])})
+
+                elif isinstance(y, Symbol):
+                    expr = expr.subs({i: a.diff(y)})
+
+            # terms like dx(u(..))
+            # TODO this is not good, since we don't know if the function is an
+            # unkown => store unknown names in a list and pass it recursively?
+            elif isinstance(a, Function) and not(isinstance(a, _derivatives)):
                 if isinstance(y, Tuple):
                     i_d = d.grad_index
                     expr = expr.subs({i: a.diff(y[i_d])})
@@ -135,8 +155,10 @@ def generic_kernel(expr, func, y, args=None):
 
                 elif isinstance(y, Symbol):
                     expr = expr.subs({i: b.diff(y).diff(y)})
+
             else:
-                raise TypeError('expecting a Derivative or partial derivative')
+                raise TypeError('expecting a Derivative or partial derivative,'
+                                ' given {} :: {}'.format(a, type(a)))
 
         # finally, we replace u by u(xi)
         fn = [i for i in expr.free_symbols if isinstance(i, Unknown)]

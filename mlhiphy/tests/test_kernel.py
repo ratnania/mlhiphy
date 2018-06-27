@@ -147,23 +147,21 @@ def test_generic_kernel_3d():
 def test_1d():
     x, xi, xj = symbols('x xi xj')
 
+    u = Unknown('u')
+
     alpha = Constant('alpha')
     beta  = Constant('beta')
     mu    = Constant('mu')
     theta = Constant('theta')
 
-    u = Unknown('u')
-#    expr = u
-#    expr = dx(u)
-    expr = dx(dx(u))
 #    expr = alpha * u
-#    expr = alpha * u + beta * dx(u)
-#    expr = u + alpha * dx(u)
-#    expr = mu * u + alpha * dx(u) + beta * dx(dx(u))
-#    expr = u + alpha * dx(u) + beta * dx(dx(u))
+#    expr = alpha * dx(u)
+    expr = alpha * u + beta * dx(u)
 
-    print('> generic_kernel := ', expand(generic_kernel(expr, u, xi)))
-    print('> generic_kernel := ', expand(generic_kernel(expr, u, xj)))
+#    expr = mu * u + alpha * dx(u) + beta * dx(dx(u))
+
+#    print('> generic_kernel := ', expand(generic_kernel(expr, u, xi)))
+#    print('> generic_kernel := ', expand(generic_kernel(expr, u, xj)))
     print('> generic_kernel := ', expand(generic_kernel(expr, u, (xi, xj))))
 
 #    kuu = theta * exp(-0.5*((xi - xj)**2))
@@ -184,33 +182,82 @@ def test_2d():
     Xi = Tuple(xi,yi)
     Xj = Tuple(xj,yj)
 
+    u = Unknown('u')
+
     alpha = Constant('alpha')
     beta  = Constant('beta')
     mu    = Constant('mu')
     theta = Constant('theta')
 
-    u = Unknown('u')
-#    expr = u + alpha * dx(u) + beta * dy(u)
-    expr = u + alpha * dx(dx(u)) #+ beta * dy(u)
+#    expr = alpha * u
+#    expr = alpha * dx(u)
+#    expr = alpha * dy(u)
+#    expr = alpha * u + beta * dx(u)
+    expr = alpha * u + beta * dy(u)
 
-    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xi)))
-    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xj)))
+#    expr = u + alpha * dx(u) + beta * dy(u)
+#    expr = u + alpha * dx(dx(u)) #+ beta * dy(u)
+
+#    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xi)))
+#    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xj)))
     print('> generic_kernel := ', expand(generic_kernel(expr, u, (Xi, Xj))))
 
-    kuu = theta * exp(-0.5*((xi - xj)**2 + (yi - yj)**2))
+#    kuu = theta * exp(-0.5*((xi - xj)**2 + (yi - yj)**2))
+#
+#    kuf = compute_kernel(expr, kuu, Xi)
+#    kfu = compute_kernel(expr, kuu, Xj)
+#    kff = compute_kernel(expr, kuu, (Xi, Xj))
+#
+#    print('> kuf := ', kuf)
+#    print('> kfu := ', kfu)
+#    print('> kff := ', kff)
 
-    kuf = compute_kernel(expr, kuu, Xi)
-    kfu = compute_kernel(expr, kuu, Xj)
-    kff = compute_kernel(expr, kuu, (Xi, Xj))
+def test_3d():
+    x, xi, xj = symbols('x xi xj')
+    y, yi, yj = symbols('y yi yj')
+    z, zi, zj = symbols('z zi zj')
 
-    print('> kuf := ', kuf)
-    print('> kfu := ', kfu)
-    print('> kff := ', kff)
+    X  = Tuple(x,y,z)
+    Xi = Tuple(xi,yi,zi)
+    Xj = Tuple(xj,yj,zj)
+
+    u = Unknown('u')
+
+    alpha = Constant('alpha')
+    beta  = Constant('beta')
+    mu    = Constant('mu')
+    theta = Constant('theta')
+
+#    expr = alpha * u
+#    expr = alpha * dx(u)
+#    expr = alpha * dy(u)
+#    expr = alpha * dz(u)
+#    expr = alpha * u + beta * dx(u)
+#    expr = alpha * u + beta * dy(u)
+    expr = alpha * u + beta * dz(u)
+
+#    expr = u + alpha * dx(u) + beta * dy(u)
+#    expr = u + alpha * dx(dx(u)) #+ beta * dy(u)
+
+#    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xi)))
+#    print('> generic_kernel := ', expand(generic_kernel(expr, u, Xj)))
+    print('> generic_kernel := ', expand(generic_kernel(expr, u, (Xi, Xj))))
+
+#    kuu = theta * exp(-0.5*((xi - xj)**2 + (yi - yj)**2) + (zi - zj)**2))
+#
+#    kuf = compute_kernel(expr, kuu, Xi)
+#    kfu = compute_kernel(expr, kuu, Xj)
+#    kff = compute_kernel(expr, kuu, (Xi, Xj))
+#
+#    print('> kuf := ', kuf)
+#    print('> kfu := ', kfu)
+#    print('> kff := ', kff)
 
 #############################################
 if __name__ == '__main__':
     test_generic_kernel_1d()
     test_generic_kernel_2d()
     test_generic_kernel_3d()
-#    test_1d()
-#    test_2d()
+    test_1d()
+    test_2d()
+    test_3d()
