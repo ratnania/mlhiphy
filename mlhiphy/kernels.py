@@ -56,9 +56,13 @@ def generic_kernel(expr, func, y, args=None):
             fn = [i for i in expr.free_symbols if isinstance(i, Unknown)]
             if not(len(fn) == 1):
                 raise ValueError('expecting only one unknown')
+
             u = fn[0]
             expr = expr.subs({u: func})
             func = [u]
+        elif isinstance(func, Function):
+            fname = type(func).__name__
+            func = [Unknown(fname)]
         else:
             raise NotImplementedError('type = ', type(func), func)
 
@@ -69,6 +73,7 @@ def generic_kernel(expr, func, y, args=None):
 
         for f in func:
             fnew  = Function(f.name)
+
             if isinstance(y, Tuple):
                 for d in _derivatives:
                     for D in _derivatives:
@@ -132,6 +137,12 @@ def generic_kernel(expr, func, y, args=None):
                     expr = expr.subs({i: b.diff(y).diff(y)})
             else:
                 raise TypeError('expecting a Derivative or partial derivative')
+
+        # finally, we replace u by u(xi)
+        fn = [i for i in expr.free_symbols if isinstance(i, Unknown)]
+        for u in fn:
+            fnew  = Function(u.name)
+            expr = expr.subs({u: fnew(*args)})
 
         return expr
 

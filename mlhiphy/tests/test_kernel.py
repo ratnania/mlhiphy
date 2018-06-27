@@ -16,12 +16,11 @@ def test_generic_kernel_1d():
 
     u = Unknown('u')
 
-#    # ... testing u
-#    # TODO not working
-#    assert(generic_kernel(u, u, xi) == Function('u')(xi))
-#    assert(generic_kernel(u, u, xj) == Function('u')(xj))
-#    assert(generic_kernel(u, u, (xi, xj)) == Function('u')(xi, xj))
-#    # ...
+    # ... testing u
+    assert(generic_kernel(u, u, xi) == Function('u')(xi))
+    assert(generic_kernel(u, u, xj) == Function('u')(xj))
+    assert(generic_kernel(u, u, (xi, xj)) == Function('u')(xi, xj))
+    # ...
 
     # ... testing dx(u)
     assert(generic_kernel(dx(u), u, xi) == Derivative(Function('u')(xi), xi))
@@ -45,12 +44,11 @@ def test_generic_kernel_2d():
 
     u = Unknown('u')
 
-#    # ... testing u
-#    # TODO not working
-#    assert(generic_kernel(u, u, xi) == Function('u')(xi))
-#    assert(generic_kernel(u, u, xj) == Function('u')(xj))
-#    assert(generic_kernel(u, u, (xi, xj)) == Function('u')(xi, xj))
-#    # ...
+    # ... testing u
+    assert(generic_kernel(u, u, xi) == Function('u')(xi))
+    assert(generic_kernel(u, u, xj) == Function('u')(xj))
+    assert(generic_kernel(u, u, (xi, xj)) == Function('u')(xi, xj))
+    # ...
 
     # ... testing dx(u)
     assert(generic_kernel(dx(u), u, Xi) ==
@@ -96,12 +94,11 @@ def test_generic_kernel_3d():
 
     u = Unknown('u')
 
-#    # ... testing u
-#    # TODO not working
-#    assert(generic_kernel(u, u, xi) == Function('u')(xi))
-#    assert(generic_kernel(u, u, xj) == Function('u')(xj))
-#    assert(generic_kernel(u, u, (xi, xj)) == Function('u')(xi, xj))
-#    # ...
+    # ... testing u
+    assert(generic_kernel(u, u, xi) == Function('u')(xi))
+    assert(generic_kernel(u, u, xj) == Function('u')(xj))
+    assert(generic_kernel(u, u, (xi, xj)) == Function('u')(xi, xj))
+    # ...
 
     # ... testing dx(u)
     assert(generic_kernel(dx(u), u, Xi) ==
