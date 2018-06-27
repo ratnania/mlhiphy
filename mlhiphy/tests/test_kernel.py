@@ -256,11 +256,41 @@ def test_3d():
 #    print('> kfu := ', kfu)
 #    print('> kff := ', kff)
 
+def test_est_2dkernel():
+    """example from Harsha."""
+    x, xi, xj = symbols('x xi xj')
+    y, yi, yj = symbols('y yi yj')
+
+    X  = Tuple(x,y)
+    Xi = Tuple(xi,yi)
+    Xj = Tuple(xj,yj)
+
+    u = Unknown('u')
+
+    phi = Constant('phi')
+    theta = Constant('theta')
+
+    expr = phi * u + dx(u) + dy(dy(u))
+
+    print('> generic_kernel := ', expand(generic_kernel(expr, u, (Xi, Xj))))
+    print('')
+
+    kuu = theta * exp(-0.5*((xi - xj)**2 + (yi - yj)**2))
+
+    kuf = compute_kernel(expr, kuu, Xi)
+    kfu = compute_kernel(expr, kuu, Xj)
+    kff = compute_kernel(expr, kuu, (Xi, Xj))
+
+    print('> kuf := ', kuf)
+    print('> kfu := ', kfu)
+    print('> kff := ', kff)
+
 #############################################
 if __name__ == '__main__':
-    test_generic_kernel_1d()
-    test_generic_kernel_2d()
-    test_generic_kernel_3d()
-    test_1d()
-    test_2d()
-    test_3d()
+#    test_generic_kernel_1d()
+#    test_generic_kernel_2d()
+#    test_generic_kernel_3d()
+#    test_1d()
+#    test_2d()
+#    test_3d()
+    test_est_2dkernel()
