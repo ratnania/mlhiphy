@@ -22,3 +22,26 @@ Machine Learning for Hidden Physics and Partial Differential Equations
 * [with the Backward Euler scheme](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/master/heat_eqn_numerical_gp.ipynb)
 * [Non-homogeneous problem](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/master/heat_eqn_non_homo_numerical_gp.ipynb)
 * [Using 2D kernel](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/master/heat_eqn.ipynb)
+
+
+### Installation of the Python package
+
+The Python package **mlhiphy** can be installed in the traditional way
+
+
+* **Standard mode**::
+
+```shell
+    python3 -m pip install .
+```
+
+* **Development mode**::
+
+```shell
+    python3 -m pip install --user -e .
+```
+
+#### Examples
+
+* [Automatic computation of Kernels](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/devel-ara/automatic_kernels.ipynb)
+
