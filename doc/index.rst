@@ -14,18 +14,19 @@ Welcome to TUM-DI-LAB's documentation!
    :caption: Contents:
 
    report/*
+   report/Appendix/*
 
 
 
-Limitations of available tools
+.. Limitations of available tools
 
-Linear PDEs
+.. Linear PDEs
 
-Non-linear PDEs
+.. Non-linear PDEs
 
-PDEs without discretization
+.. PDEs without discretization
 
-Results and Analysis
+.. Results and Analysis
 
-Conclusion
+.. Conclusion
 
