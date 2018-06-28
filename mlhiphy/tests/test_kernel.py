@@ -157,7 +157,11 @@ def test_1d():
 #    expr = alpha * u
 #    expr = alpha * dx(u)
 #    expr = alpha * u + beta * dx(u)
-    expr = mu * u + alpha * dx(u) + beta * dx(dx(u))
+#    expr = mu * u + dx(u)
+#    expr = mu * u + dx(dx(u))
+#    expr = mu * u + alpha * dx(u) + beta * dx(dx(u))
+
+    expr = mu * u + dx(u) + dx(dx(u))
 
 #    print('> generic_kernel := ', expand(generic_kernel(expr, u, xi)))
 #    print('> generic_kernel := ', expand(generic_kernel(expr, u, xj)))
@@ -293,4 +297,4 @@ if __name__ == '__main__':
     test_1d()
     test_2d()
     test_3d()
-#    test_est_2dkernel()
+    test_est_2dkernel()

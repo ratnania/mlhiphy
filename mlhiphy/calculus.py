@@ -4,6 +4,7 @@
 
 import numpy as np
 from itertools import groupby
+from collections import OrderedDict
 
 from sympy.core.sympify import sympify
 from sympy.simplify.simplify import simplify
@@ -271,9 +272,41 @@ def sort_partial_derivatives(expr):
     ls = []
 
     args = find_partial_derivatives(expr)
-    for key, group in groupby(args, lambda x: get_number_derivatives(x)):
-        for a in group:
-            ls.append(a)
+
+#    # ... Note
+#    #     group by is given the wrong answer for expr =mu * u + dx(u) + dx(dx(u))
+#    for key, group in groupby(args, lambda x: get_number_derivatives(x)):
+#        g = [a for a in group]
+#        for a in group:
+#            ls.append(a)
+#    # ...
+
+    # ...
+    d = {}
+    for a in args:
+        n = get_number_derivatives(a)
+        if n in d.keys():
+            d[n] += [a]
+        else:
+            d[n] = [a]
+    # ...
+
+    # ...
+    if not d:
+        return []
+    # ...
+
+    # ... sort keys from high to low
+    keys = np.asarray(list(d.keys()))
+    keys.sort()
+    keys = keys[::-1]
+    # ...
+
+    # ... construct a list of partial derivatives from high to low order
+    ls = []
+    for k in keys:
+        ls += d[k]
+    # ...
 
     return ls
 # ...

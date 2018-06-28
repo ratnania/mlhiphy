@@ -48,7 +48,8 @@ def generic_kernel(expr, func, y, args=None):
 
         # check that there are no partial derivatives in the final expression
         ops = find_partial_derivatives(expr)
-        assert(len(ops) == 0)
+        if not(len(ops) == 0):
+            raise ValueError('Found unexpected partial differential operators in \n{}'.format(expr))
 
         return expr
     else:
@@ -88,6 +89,7 @@ def generic_kernel(expr, func, y, args=None):
             if isinstance(y, Tuple):
                 args = [*y]
 
+        # ... TODO is there a way to remove this part?
         for f in func:
             fnew  = Function(f.name)
 
@@ -108,11 +110,13 @@ def generic_kernel(expr, func, y, args=None):
                 # 1D case, we only use dx
                 expr = expr.subs({dx(dx(f)): fnew(*args).diff(y).diff(y)})
                 expr = expr.subs({dx(f): fnew(*args).diff(y)})
+
             else:
                 raise TypeError('expecting Tuple or Symbol')
+        # ...
 
         # partial derivatives must be sorted from high to low
-        ops = sort_partial_derivatives(expr)[::-1]
+        ops = sort_partial_derivatives(expr)
         for i in ops:
 
             if not(len(i.args) == 1):
