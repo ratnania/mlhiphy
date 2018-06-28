@@ -44,4 +44,6 @@ The Python package **mlhiphy** can be installed in the traditional way
 ### Automatic computation of Kernels
 
 1. [1d example](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/devel-ara/autoker/01_example_1d.ipynb)
+3. [2d example](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/devel-ara/autoker/01_example_2d.ipynb)
+3. [3d example](http://nbviewer.jupyter.org/github/ratnania/mlhiphy/blob/devel-ara/autoker/01_example_3d.ipynb)
 

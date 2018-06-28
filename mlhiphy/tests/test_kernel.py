@@ -287,10 +287,10 @@ def test_est_2dkernel():
 
 #############################################
 if __name__ == '__main__':
-#    test_generic_kernel_1d()
-#    test_generic_kernel_2d()
-#    test_generic_kernel_3d()
-#    test_1d()
-#    test_2d()
-#    test_3d()
-    test_est_2dkernel()
+    test_generic_kernel_1d()
+    test_generic_kernel_2d()
+    test_generic_kernel_3d()
+    test_1d()
+    test_2d()
+    test_3d()
+#    test_est_2dkernel()
