@@ -30,7 +30,7 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.imgmath']
+# extensions = ['sphinx.ext.imgmath']
 
 # To include jupyter notebooks
 extensions = [
@@ -135,12 +135,13 @@ latex_elements = {
 
     # Additional stuff for the LaTeX preamble.
     #
-    # 'preamble': '',
+    # 'preamble': '\\setcounter{chapter}{-1}',
 
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
-    'sphinxsetup': 'verbatimwrapslines=true'
+    'sphinxsetup': 'verbatimwrapslines=true',
+    'extraclassoptions': 'openany'
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
