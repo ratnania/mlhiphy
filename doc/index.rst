@@ -24,6 +24,8 @@ Welcome to TUM-DI-LAB's documentation!
 
 
 
+.. [LOPS14] Lord, G. J., Powell, C. E., & Shardlow, T. (2014). An Introduction to Computational Stochastic PDEs. Cambridge: Cambridge University Press. http://doi.org/10.1017/CBO9781139017329
+
 .. Limitations of available tools
 
 .. Linear PDEs
