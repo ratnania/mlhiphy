@@ -9,8 +9,10 @@ Welcome to TUM-DI-LAB's documentation!
 .. raw:: latex
 
    \begin{abstract}
-   This work concerns the implementation and analysis of parameter-estimation in PDE using Gaussian Processes. 
-   Given data from two black-box functions $u(x)$ and $f(x)$, we are interested in estimating the parameter $\phi$ in a linear transformation $\mathcal{L}_x^{\phi}$ such that $f(x) = \mathcal{L}_x^{\phi} u(x)$.
+   Recent research has suggested great benefits from applying machine learning tools for the verification of parameters in PDEs.
+   Building upon this research, we implement and analyze the estimation of parameters in PDEs using Gaussian Processes.
+   Knowing only the parameter-dependend (linear) relationship between noisy data, we can infer this parameter by placing a Gaussian Prior on the data    and by optimizing a certain log-marginal likelihood function. <br>
+   After introducing the concept of Gaussian Processes, we apply this methodology to the Heat Equation, a modified version of the Burgers' Equation and    to the Wave Equation. By doing this, we show how the framework can be successfully used in one or more dimensions and to some extent for the    estimation of multiple parameters and for those in non-linear transformations.
    \end{abstract}
 
 .. toctree::
