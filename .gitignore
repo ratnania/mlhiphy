@@ -104,3 +104,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+doc/latexpdf.bat
+doc/make-3.81.exe
+doc/not to be pushed yet/Intro_to_GPs.rst
+doc/not to be pushed yet/introduction.rst
