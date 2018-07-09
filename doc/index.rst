@@ -6,12 +6,7 @@
 Welcome to TUM-DI-LAB's documentation!
 ======================================
 
-.. raw:: latex
 
-   \begin{abstract}
-   This work concerns the implementation and analysis of parameter-estimation in PDE using Gaussian Processes. 
-   Given data from two black-box functions $u(x)$ and $f(x)$, we are interested in estimating the parameter $\phi$ in a linear transformation $\mathcal{L}_x^{\phi}$ such that $f(x) = \mathcal{L}_x^{\phi} u(x)$.
-   \end{abstract}
 
 .. toctree::
    :glob:

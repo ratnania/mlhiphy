@@ -47,7 +47,7 @@ templates_path = ['_templates']
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = ['.rst', '.ipynb']
+source_suffix = ['.rst', '.ipynb', '.tex']
 
 # The master toctree document.
 master_doc = 'index'
@@ -141,7 +141,14 @@ latex_elements = {
     #
     # 'figure_align': 'htbp',
     'sphinxsetup': 'verbatimwrapslines=true',
-    'extraclassoptions': 'openany'
+    'extraclassoptions': 'openany',
+    'tableofcontents': r'''
+\begin{abstract}
+This work concerns the implementation and analysis of parameter-estimation in PDE using Gaussian Processes. 
+Given data from two black-box functions $u(x)$ and $f(x)$, we are interested in estimating the parameter $\phi$ in a linear transformation $\mathcal{L}_x^{\phi}$ such that $f(x) = \mathcal{L}_x^{\phi} u(x)$.
+\end{abstract}
+\tableofcontents
+'''
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -173,7 +180,6 @@ texinfo_documents = [
      author, 'TUM-DI-LAB', 'One line description of project.',
      'Miscellaneous'),
 ]
-
 
 
 nbsphinx_timeout = 600
