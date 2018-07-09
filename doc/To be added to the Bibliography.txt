@@ -1,0 +1,3 @@
+https://github.com/marionmari/pyGPs
+https://en.wikipedia.org/wiki/Wave_equation
+https://en.wikipedia.org/wiki/Burgers%27_equation
