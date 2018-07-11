@@ -120,9 +120,14 @@ Kernels
 
 In machine learning literature, the covariance functions are referred to as kernels.
 
-List of kernels
-+++++++++++++++++++
-
-
-
 [LOPS] Theorem 6.5
+
+Squared Exponential Kernel
+++++++++++++++++++++++++++++++
+The kernel 
+
+
+
+
+
+

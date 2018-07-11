@@ -162,6 +162,7 @@ latex_documents = [
      u'K. Harsha, A. Grundner, K. Wang', 'manual'),
 ]
 
+latex_logo = 'test.png'
 
 # -- Options for manual page output ---------------------------------------
 
