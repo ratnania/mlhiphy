@@ -6,7 +6,6 @@
 Welcome to TUM-DI-LAB's documentation!
 ======================================
 
-<<<<<<< HEAD
 .. toctree::
    :glob:
    :numbered:   
@@ -32,8 +31,6 @@ Parameter estimation with Gaussian Processes
    
 Linear PDEs
 ===========
-=======
->>>>>>> c45ce6d62cae056232bd9b3898d4fc93de49e458
 
 .. toctree::
    :maxdepth: 2
