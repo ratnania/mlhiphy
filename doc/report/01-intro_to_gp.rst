@@ -117,13 +117,12 @@ Kernels
 **Definition** [LOPS14] [5.31] (mean-square continuity)
 
 In machine learning literature, the covariance functions are referred to as kernels.
+
 [LOPS] Theorem 6.5
 
 Squared Exponential Kernel
-+++++++++++++++++++
-
-
-
+++++++++++++++++++++++++++++++
+The kernel 
 
 
 
