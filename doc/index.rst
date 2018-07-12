@@ -15,7 +15,7 @@ About Gaussian Processes
 ========================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    report/01-intro_to_gp
    report/02-simple_gp.nblink
@@ -28,21 +28,23 @@ Parameter estimation with Gaussian Processes
    :maxdepth: 1
 
    report/04-par_est.nblink
+   report/05-par_est2.nblink
+   report/06-par_est3.nblink
    
 Linear PDEs
 ===========
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
-   report/07-heat_eqn_kernel2.nblink
+   report/07-heat.nblink
    report/10-wave.nblink
 
 Non-linear PDEs
 ===============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    report/08-burgers1.nblink
    report/09-burgers2.nblink
@@ -54,27 +56,24 @@ Approach with pyGPs
    :maxdepth: 1
 
    report/12-pyGPs.nblink
+
    
+
+.. bibliography:: refs.bib
+   :style: unsrt
+   :all:
+
+
+
+.. raw:: latex
+
+   \appendix
+
 Appendix   
-========   
+============
    
 .. toctree::
    
    report/Appendix/01-pyGPs_demo.nblink
    report/Appendix/02-pyGPs_covariance.nblink
-   
-
-.. [LOPS14] Lord, G. J., Powell, C. E., & Shardlow, T. (2014). An Introduction to Computational Stochastic PDEs. Cambridge: Cambridge University Press. http://doi.org/10.1017/CBO9781139017329
-
-.. Limitations of available tools
-
-.. Linear PDEs
-
-.. Non-linear PDEs
-
-.. PDEs without discretization
-
-.. Results and Analysis
-
-.. Conclusion
-
+   report/Appendix/03-gpy_demo.nblink
