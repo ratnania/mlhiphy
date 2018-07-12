@@ -36,7 +36,8 @@
 extensions = [
     'nbsphinx',
     'sphinx.ext.mathjax',
-    'nbsphinx_link'
+    'nbsphinx_link',
+    'sphinxcontrib.bibtex'
 ]
 exclude_patterns = ['_build', '**.ipynb_checkpoints']
 
@@ -135,7 +136,7 @@ latex_elements = {
 
     # Additional stuff for the LaTeX preamble.
     #
-    # 'preamble': '\\setcounter{chapter}{-1}',
+    # 'preamble': '\\usepackage{wallpaper}',
 
     # Latex figure (float) alignment
     #
