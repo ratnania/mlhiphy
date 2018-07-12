@@ -13,3 +13,4 @@ dependencies:
   - pip:
     - nbsphinx
     - git+https://github.com/vidartf/nbsphinx-link
+    - sphinxcontrib-bibtex
