@@ -68,7 +68,9 @@ Gaussian processes
 ----------------------
 
 
-**Definition** (Stochastic process) [LOPS14] [5.2] Given a set :math:`\mathcal{T} \subset \mathbb{R}`, a measurable space  :math:`( H , \mathcal{H} )`, and a probability space :math:`(\Omega, \mathcal{F}, \mathbb{P})`, a H-valued stochastic process is a set of H-valued random variables :math:`\{X(t): t \in \mathcal{T}\}`. We simply write X(t) to denote the process. To exphasise the dependence on :math:`\omega` and that :math:`X : \Omega \times \mathcal{T} \rightarrow \mathbb{R}`, we may write :math:`X(t,\omega)`.
+.. topic:: Definition (Stochastic process):
+
+   :cite: `Powell2014` [5.2] Given a set :math:`\mathcal{T} \subset \mathbb{R}`, a measurable space  :math:`( H , \mathcal{H} )`, and a probability space :math:`(\Omega, \mathcal{F}, \mathbb{P})`, a H-valued stochastic process is a set of H-valued random variables :math:`\{X(t): t \in \mathcal{T}\}`. We simply write X(t) to denote the process. To exphasise the dependence on :math:`\omega` and that :math:`X : \Omega \times \mathcal{T} \rightarrow \mathbb{R}`, we may write :math:`X(t,\omega)`.
 
 **Definition** (second order) [LOPS14] [5.9] A real-valued stochastic process is second order if :math:`X(t) \in L^2(\Omega)` for each :math:`t \in \mathcal{T}`. The mean function is defined by :math:`\mu(t) := \mathbb{E}[X(t)]` and the covariance function is defined by :math:`C(s, t) : = Cov(X(s), X(t)))` for all :math:`s,t \in \mathcal{T}`.
 
