@@ -116,11 +116,64 @@ Kernels
 -----------
 
 
-Squared Exponential Kernel
+
+Squared Exponential Kernel 
 ++++++++++++++++++++++++++++++
-The kernel 
+It is also called Radial Basis Function kernel (RBF kernel), or Gaussian kernel, which is as following:
+
+.. math::
+
+   k _ { \mathrm { SE } } \left( x , x ^ { \prime } \right) = \sigma ^ { 2 } \exp \left( - \frac { \left( x - x ^ { \prime } \right) ^ { 2 } } { 2 l ^ { 2 } } \right)
+
+The lengthscale :math:`l` determines the length of the "wiggles" in the function. The variance :math:`\sigma^{2}` determines the average distance of the function away from its mean. All the standard kernel has this parameter in front as a scale factor. 
+
+It has become the default kernel for GPs and pyGPs, and we have also chose this kernel for our project, which will be explain in the later section.
 
 
+Rational Quadratic Kernel
+++++++++++++++++++++++++++++++++
+
+.. math::
+
+   k _ { \mathrm { RQ } } \left( x , x ^ { \prime } \right) = \sigma ^ { 2 } \left( 1 + \frac { \left( x - x ^ { \prime } \right) ^ { 2 } } { 2 \alpha \ell ^ { 2 } } \right) ^ { - \alpha }
+
+This kernel is equivalent to adding together many RBF kernels with different lengthscales, where GP priors should have functions which vary smoothly across many lengthscales. If :math:`\alpha \rightarrow \infty`, the RQ is identical to the RBF.
+
+
+
+
+Periodic Kernel 
++++++++++++++++++++
+
+.. math::
+   k _ { \operatorname { Per } } \left( x , x ^ { \prime } \right) = \sigma ^ { 2 } \exp \left( - \frac { 2 \sin ^ { 2 } \left( \pi | x - x ^ { \prime } | / p \right) } { \ell ^ { 2 } } \right)
+
+
+It is obvious that the periodic kernel (derived by David Mackay) is for the function with repeating structures. Its parameters are easily interpretable:
+
+The period :math:`p` is the distnace between repititions of the function.
+
+The lengthscale :math:`l` is the lengthscale function in the same way as in the SE kernel.
+
+Linear Kernel 
+++++++++++++++++++
+
+.. math::
+
+   k _ { \mathrm { Lin } } \left( x , x ^ { \prime } \right) = \sigma^ { 2 } ( x - c ) \left( x ^ { \prime } - c \right)
+
+
+The linear kernel, unlike other kernels, has non-stationary covariance function, which means that it does not solely depend on :math:`x - x ^{ \prime }` . And :math:`c` determines the x-coordinate of the point that all the lines in the posterior go though.
+
+Our Choice
++++++++++++++++
+
+Since our project is based on the Raissi's paper, so we also follow his choice of the kernel. The reason has been stated in his paper:
+
+   In particular, the squared exponential covariance function chosen above implies smooth approximations. More complex function classes can be accommodated by appropriately choosing kernels. For example, non-stationary kernels employing nonlinear warpings of the input space can be constructed to capture discontinuous response. ::
+
+
+In the following chapter, we will see a simple case of solving a function parameter with different kernels. 
 
 
 

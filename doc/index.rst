@@ -69,18 +69,11 @@ Approach with pyGPs
 
    \appendix
 
-Appendix - pyGPs
+Appendix
 ============
    
 .. toctree::
    
    report/Appendix/01-pyGPs_demo.nblink
    report/Appendix/02-pyGPs_covariance.nblink
-
-
-Appendix - GPy
-==================
-
-.. toctree::
-
    report/Appendix/03-gpy_demo.nblink
