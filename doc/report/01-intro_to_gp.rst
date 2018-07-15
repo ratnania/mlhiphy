@@ -67,65 +67,53 @@ Then, the conditional probability of :math:`X_2` is given by
 Gaussian processes
 ----------------------
 
+The following definitions and theorems are to introduce the concept of Gaussian processes and fields. For detailed discussions and proofs, please refer to :cite:`Powell2014`.
 
-.. topic:: Definition (Stochastic process):
+**Definition** (Stochastic process):
 
-   :cite: `Powell2014` [5.2] Given a set :math:`\mathcal{T} \subset \mathbb{R}`, a measurable space  :math:`( H , \mathcal{H} )`, and a probability space :math:`(\Omega, \mathcal{F}, \mathbb{P})`, a H-valued stochastic process is a set of H-valued random variables :math:`\{X(t): t \in \mathcal{T}\}`. We simply write X(t) to denote the process. To exphasise the dependence on :math:`\omega` and that :math:`X : \Omega \times \mathcal{T} \rightarrow \mathbb{R}`, we may write :math:`X(t,\omega)`.
+    Given a set :math:`\mathcal{T} \subset \mathbb{R}`, a measurable space  :math:`( H , \mathcal{H} )`, and a probability space :math:`(\Omega, \mathcal{F}, \mathbb{P})`, a H-valued stochastic process is a set of H-valued random variables :math:`\{X(t): t \in \mathcal{T}\}`. We simply write X(t) to denote the process. To exphasise the dependence on :math:`\omega` and that :math:`X : \Omega \times \mathcal{T} \rightarrow \mathbb{R}`, we may write :math:`X(t,\omega)`.
 
-**Definition** (second order) [LOPS14] [5.9] A real-valued stochastic process is second order if :math:`X(t) \in L^2(\Omega)` for each :math:`t \in \mathcal{T}`. The mean function is defined by :math:`\mu(t) := \mathbb{E}[X(t)]` and the covariance function is defined by :math:`C(s, t) : = Cov(X(s), X(t)))` for all :math:`s,t \in \mathcal{T}`.
+**Definition** (second order process):
 
-**Definition** (real-valued Gaussian process) [LOPS14] [5.10] A real-valued second-order stochastic process :math:`\{X(t): t \in \mathcal{T}\}` is Gaussian if :math:`\mathbf{X} = [X(t_1), \dotsc, X(t_M)]^T` follows a multivariate Gaussian distribution for any :math:`t_1, \dotsc, t_M \in \mathcal{T}` and any :math:`M \in \mathbb{N}`.
+   A real-valued stochastic process is second order if :math:`X(t) \in L^2(\Omega)` for each :math:`t \in \mathcal{T}`. The mean function is defined by :math:`\mu(t) := \mathbb{E}[X(t)]` and the covariance function (also referred to as the *kernel*) is defined by :math:`k(s, t) : = Cov(X(s), X(t)))` for all :math:`s,t \in \mathcal{T}`.
 
-**Theorem** [LOPS14] [5.17] (Daniel-Kolmogorov)
+**Definition** (real-valued Gaussian process):
 
-
-**Theorem** [LOPS14] [5.18] Let :math:`\mathcal{T} \subset \mathbb{R}`. The following statements are equivalent.
-
-(1) There exists a real-valued second-order stochastic process :math:`X(t)`  with mean function :math:`\mu(t)` and covariance function :math:`C(s, t)`.
-
-(2) The function :math:`\mu` maps from :math:`\mathcal{T} \rightarrow \mathbb{R}` and the function :math:`C` maps from :math:`\mathcal{T} \times \mathcal{T} \rightarrow \mathbb{R}`. Further C is symmetric and non-negative definite.
-
-*Proof*
-
-:math:`(1) \implies (2)`: As the process is second-order, the mean :math:`\mu(t)` and covariance :math:`C(s, t)` are well defined in :math:`\mathbb{R}`. Then, :math:`C(s, t)` is non-negative definite, because for any :math:`a_1, \dotsc , a_N \in \mathbb{R}`
-and :math:`t_1, \dotsc, t_N \in \mathcal{T}`
-
-.. math::
-
-   \left.\begin{aligned} \sum _ { j , k = 1 } ^ { N } a _ { j } C \left( t _ { j } , t _ { k } \right) a _ { k } & = E \left[ \sum _ { j , k = 1 } ^ { N } \left( X \left( t _ { j } \right) - \mu \left( t _ { j } \right) \right) \left( X \left( t _ { k } \right) - \mu \left( t _ { k } \right) \right) a _ { j } a _ { k } \right] \\ & = E \left[ | \sum _ { j = 1 } ^ { N } a _ { j } \left( X \left( t _ { j } \right) - \mu \left( t _ { j } \right) \right) | ^ { 2 } \right] \geq 0 \end{aligned} \right.
-
-:math:`C(s, t)` is symmetric as :math:`Cov(X(s), X(t)) = Cov(X(t), X(s))` for all :math:`t,s \in \mathcal{T}`.
-
-:math:`(2) \implies (1)`: Consider any :math:`t_1, \dotsc, t_M \in \mathcal{T}` and let :math:`C^N \in \mathbb{R}^{N \times N}` be the matrix with entries :math:`c_{jk} = C(t_j, t_k)` for :math:`j, k = 1, \dotsc, N`. :math:`C^N` is symmetric and is non-negative definite because
-
-.. math::
-
-   \mathbf { a } ^ { T } C _ { N } \mathbf { a } = \sum _ { j , k = 1 } ^ { N } a _ { j } C \left( t _ { j } , t _ { k } \right) a _ { k } \geq 0 , \quad \forall a \in \mathbb { R } ^ { N }
-
-and hence is a valid covariance matrix.
+   A real-valued second-order stochastic process :math:`\{X(t): t \in \mathcal{T}\}` is Gaussian if :math:`\mathbf{X} = [X(t_1), \dotsc, X(t_M)]^T` follows a multivariate Gaussian distribution for any :math:`t_1, \dotsc, t_M \in \mathcal{T}` and any :math:`M \in \mathbb{N}`.
 
 
-**Corollary** [LOPS14] [5.19] The probability distribution :math:`\mathbb { P } _ { X }` on :math:`\left( \mathbb { R } ^ { \mathcal { T } } , \mathcal { B } \left( \mathbb { R } ^ { \mathcal { T } } \right) \right)` of a real-valued Gaussian process :math:`X(t)` is uniquely determined by its mean :math:`\mu : \mathcal { J } \rightarrow \mathbb { R }` and covariance function :math:`C : \mathcal { T } \times \mathcal { T } \rightarrow \mathbb { R }`.
+**Theorem**:
 
-**Definition** [LOPS14] 7.1 (random field)
+   Let :math:`\mathcal{T} \subset \mathbb{R}`. The following statements are equivalent.
 
-**Definition** [LOPS14] 7.3 (second-order)
+   (1) There exists a real-valued second-order stochastic process :math:`X(t)`  with mean function :math:`\mu(t)` and kernel :math:`k(s, t)`.
 
-**Definition** [LOPS14] 7.5 (Gaussian random field)
+   (2) The function :math:`\mu` maps from :math:`\mathcal{T} \rightarrow \mathbb{R}` and the function :math:`k` maps from :math:`\mathcal{T} \times \mathcal{T} \rightarrow \mathbb{R}`. Further :math:`k` is symmetric and non-negative definite.
+
+
+
+**Corollary**:
+
+   The probability distribution :math:`\mathbb { P } _ { X }` on :math:`\left( \mathbb { R } ^ { \mathcal { T } } , \mathcal { B } \left( \mathbb { R } ^ { \mathcal { T } } \right) \right)` of a real-valued Gaussian process :math:`X(t)` is uniquely determined by its mean :math:`\mu : \mathcal { T } \rightarrow \mathbb { R }` and kernel :math:`k : \mathcal { T } \times \mathcal { T } \rightarrow \mathbb { R }`.
+
+**Definition** (random field):
+
+   For a set :math:`D \subset \mathbb { R } ^ { d }`, a (real-valued) random field :math:`\{ u ( x ) : x \in D \}` is a set of real-valued random variables on a probability space :math:`( \Omega , \mathcal { F } , \mathbb { P } )`. In subsequent text, we drop :math:`\omega \in \Omega` and simply write :math:`u(x)`, although it should be noted that :math:`u : D \times \Omega \rightarrow \mathbb { R }`.
+
+**Definition** (second-order field):
+
+   For a set :math:`D \subset \mathbb { R } ^ { d }`, a random field :math:`\{ u ( x ) : x \in D \}` is second- order if :math:`u ( \mathbf { x } ) \in L ^ { 2 } ( \Omega ) \forall x \in D`. We say a second-order random field has mean function :math:`u ( \mathbf { x } ) \in L ^ { 2 } ( \Omega )` and kernel
+
+   :math:`k ( \mathbf { x } , \mathbf { y } ) = \operatorname { Cov } ( u ( \mathbf { x } ) , u ( \mathbf { y } ) ) : = \mathbb { E } [ ( u ( \mathbf { x } ) - \mu ( \mathbf { x } ) ) ( u ( \mathbf { y } ) - \mu ( \mathbf { y } ) ) ] , \quad \mathbf { x } , \mathbf { y } \in D`
+
+**Definition** (Gaussian random field):
+
+   A Gaussian random field :math:`\{ u ( x ) : x \in D \}` is a second-order random field such that :math:`u = \left[ u \left( x _ { 1 } \right) , u \left( x _ { 2 } \right) , \ldots , u \left( x _ { M } \right) \right] ^ { T }` follows the multivariate Gaussian distribution for any :math:`x _ { 1 } , \ldots , x _ { M } \in D` and any :math:`M \in \mathbb { N }`. We denote it here as :math:`\mathbf { u } \sim \mathbf { GP } ( \mathbf { \mu } , k )` where :math:`\mu _ { i } = \mu \left( x _ { i } \right)` and :math:`k _ { i j } = k \left( x _ { i } , x _ { j } \right)`.
+
+
 
 Kernels
 -----------
-
-**Definition** [LOPS14] [5.31] (mean-square continuity)
-[LOPS] Theorem 6.5
-
-In machine learning literature, the covariance functions are referred to as kernels, where 
-
-.. math:: 
-
-   \operatorname { Cov } \left[ f ( \mathbf { x } ) , f \left( \mathbf { x } ^ { \prime } \right) \right] = k \left( \mathbf { x } , \mathbf { x } ^ { \prime } \right)
-
-The choice of kernel determines the most of the generalization properties of a gaussian process model. Here, we introduce some standard kernels for gaussian process. 
 
 
 

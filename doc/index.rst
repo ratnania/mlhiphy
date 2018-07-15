@@ -69,7 +69,7 @@ Approach with pyGPs
 
    \appendix
 
-Appendix   
+Appendix
 ============
    
 .. toctree::
