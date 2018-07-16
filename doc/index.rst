@@ -57,6 +57,25 @@ Approach with pyGPs
 
    report/12-pyGPs.nblink
 
+
+Conclusion
+==============
+It has been demonstrated that the Gaussian process approach works well for a variety of PDEs arising from linear operators. The non-linear cases are difficult as in the case of the Burgers equation.
+
+
+Problems with the RBF kernel
+--------------------------------
+One of the problems we noticed with the RBF kernel is that for more than 30 data points, the final covariance matrix was frequently ill-conditioned. This happens in cases where the shape parameter is very small. For a kernel represented as :math:`k(x,y) = e^{-l^2||x-y||^2}`, the shape parameter we refer to is :math:`l`. When this is small, the rows of the covariance matrix become numerically less rank than the number of data points. Hence, this kernel is not good enough for practical purposes on huge datasets. The immediate solution that comes to mind for this problem is to do a singular value decomposition. :cite:`Fasshauer2012` outlines the RBF-QR algorithm to avoid these issues. Stable computations can also be acheived using Hermite polynomials :cite:`Fornberg2011`, :cite:`Yurova2017`.
+
+
+Non-linearity
+----------------
+For the Burger's equation we used an approximation to convert the non-linear terms to linear. This works for some special cases but is not a generic approach. The problem arises because the product of Gaussian processes do not result in a Gaussian process. Nevertheless, we could utilise the fact that the product of Gaussian distributions is also Gaussian to come up with a proper solution. Another approach is to assume priors over the kernel hyperparameters and infer parameters with MCMC sampling schemes :cite:`Calderhead2009`.
+
+
+Kernel computations
+-----------------------
+The current framework involves two computations for every operator over the kernel. It is easy to do this by hand for simple operators but even then there is scope for manual error. It would be nice to have a tool to compute the transformed kernels automatically. Some progress has been made at this front resulting in a package for symbolic kernel computations available on this project's github repository :cite:`Ratnani2018`.
    
 
 .. bibliography:: refs.bib
