@@ -30,7 +30,7 @@ Parameter estimation with Gaussian Processes
    report/04-par_est.nblink
    report/05-par_est2.nblink
    report/06-par_est3.nblink
-   report/11-par-est0.nblink
+   report/11-par_est0.nblink
    
 Linear PDEs
 ===========
