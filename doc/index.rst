@@ -11,6 +11,12 @@ Welcome to TUM-DI-LAB's documentation!
    :numbered:   
    :caption: Contents
 
+
+.. toctree::
+   :maxdepth: 0
+
+   report/preface
+
 About Gaussian Processes
 ========================
 
