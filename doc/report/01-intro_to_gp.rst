@@ -72,7 +72,7 @@ The following definitions and theorems are to introduce the concept of Gaussian 
 
 **Definition** (Stochastic process):
 
-    Given a set :math:`\mathcal{T} \subset \mathbb{R}`, a measurable space  :math:`( H , \mathcal{H} )`, and a probability space :math:`(\Omega, \mathcal{F}, \mathbb{P})`, an :math:`H`*-valued stochastic process* is a set of :math:`H`-valued random variables :math:`\{X(t): t \in \mathcal{T}\}`. We simply write :math:`X(t)` to denote the process. To emphasize the dependence on :math:`\omega` and that :math:`X : \mathcal{T} \times \Omega \rightarrow \mathbb{R}`, we may write :math:`X(t,\omega)`.
+    Given a set :math:`\mathcal{T} \subset \mathbb{R}`, a measurable space  :math:`( H , \mathcal{H} )`, and a probability space :math:`(\Omega, \mathcal{F}, \mathbb{P})`, an :math:`H`-valued *stochastic process* is a set of :math:`H` -valued random variables :math:`\{X(t): t \in \mathcal{T}\}`. We simply write :math:`X(t)` to denote the process. To emphasize the dependence on :math:`\omega` and that :math:`X : \mathcal{T} \times \Omega \rightarrow \mathbb{R}`, we may write :math:`X(t,\omega)`.
 
 **Definition** (Second-order process):
 

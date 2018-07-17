@@ -13,8 +13,8 @@ This paper is based mostly on the research conducted by Raissi et al. :cite:`Rai
 .. rubric:: Notes regarding the contents
 
 
-In order to retain comparability, in each chapter we will work with a set of points :math:`X` with elements in :math:`[0,1]^n` where n is the number of dimensions we are working with. We always use either 10 or 20 points with the corresponding function values :math:`(X,Y_u, Y_f)` as data samples. In this range, the estimates are good and the computation cost low. 
+In order to retain comparability, in each chapter we will work with a set of points :math:`X` with elements in :math:`[0,1]^n` where n is the number of dimensions. We always use either 10 or 20 points with the corresponding function values :math:`(X,Y_u, Y_f)` as data samples. In this range, the estimates are good and the computation cost low. 
 
 We will mostly stick with a noise parameter of :math:`s=10^{-7}`, due to a trade-off between having a well-conditioned matrix and accuracy: Our data samples are generated without any noise, so the lower the noise parameter, the more accurate our estimation should be. Setting :math:`s=0` would increase the likelihood of having to work with an ill-conditioned or singular matrix, since two columns in the covariance matrix corresponding to two points being close to each other would have almost equal values. We want to avoid this, since, when calculating the negative log-likelihood, we have to calculate the inverse of the covariance matrix. When working with noisy data on the other hand, one could optimize over the parameter s as well.
 
-A number of code cells from the notebook are missing in the report. This has been done to improve readability. For the complete notebook, we refer to our GitHub repository.
+Most code cells from our notebooks are missing in the report. This has been done to improve readability. For the complete notebooks, we refer to our GitHub repository :cite:`Ratnani2018`.
