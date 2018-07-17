@@ -89,7 +89,7 @@ The following definitions and theorems are to introduce the concept of Gaussian 
 
    (1) There exists a real-valued second-order stochastic process :math:`X(t)`  with mean function :math:`\mu(t)` and kernel :math:`k(s, t)`.
 
-   (2) The function :math:`\mu` maps :math:`\mathcal{T} \rightarrow \mathbb{R}` and the function :math:`k` maps :math:`\mathcal{T} \times \mathcal{T} \rightarrow \mathbb{R}`. Furthermore :math:`k` is symmetric and non-negative definite.
+   (2) The function :math:`\mu` maps :math:`\mathcal{T} \rightarrow \mathbb{R}` and the function :math:`k` maps :math:`\mathcal{T} \times \mathcal{T} \rightarrow \mathbb{R}`. Furthermore :math:`k` is symmetric and positive semi-definite.
 
 
 
