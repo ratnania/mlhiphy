@@ -11,16 +11,20 @@ title = {{Derivative observations in Gaussian process models of dynamic systems}
 url = {https://papers.nips.cc/paper/2287-derivative-observations-in-gaussian-process-models-of-dynamic-systems.pdf},
 year = {2002}
 }
-@article{Rashidinia2018,
-abstract = {We investigate a novel method for the numerical solution of two-dimensional time-dependent convection–diffusion–reaction equations with nonhomogeneous boundary conditions. We first approximate the equation in space by a stable Gaussian radial basis function (RBF) method and obtain a matrix system of ODEs. The advantage of our method is that, by avoiding Kronecker products, this system can be solved using one of the standard methods for ODEs. For the linear case, we show that the matrix system of ODEs becomes a Sylvester-type equation, and for the nonlinear case we solve it using predictor–corrector schemes such as Adams–Bashforth and implicit–explicit (IMEX) methods. This work is based on the idea proposed in our previous paper (2016), in which we enhanced the expansion approach based on Hermite polynomials for evaluating Gaussian radial basis function interpolants. In the present paper the eigenfunction expansions are rebuilt based on Chebyshev polynomials which are more suitable in numerical computations. The accuracy, robustness and computational efficiency of the method are presented by numerically solving several problems.},
-author = {Rashidinia, J. and Khasi, M. and Fasshauer, G. E.},
-doi = {10.1016/j.camwa.2017.12.007},
-issn = {08981221},
-journal = {Computers and Mathematics with Applications},
-keywords = {Adams–Bashforth,Convection–diffusion–reaction equations,Eigenfunction expansion,Matrix system of ODEs,Radial basis functions,Robin boundary condition},
+@book{Rasmussen2004,
+abstract = {Gaussian processes (GPs) are natural generalisations of multivariate Gaussian random variables to infinite (countably or continuous) index sets. GPs have been applied in a large number of fields to a diverse range of ends, and very many deep theoretical analyses of various properties are available. This paper gives an introduction to Gaussian processes on a fairly elementary level with special emphasis on characteristics relevant in machine learning. It draws explicit connections to branches such as spline smoothing models and support vector machines in which similar ideas have been investigated. Gaussian process models are routinely used to solve hard machine learning problems. They are attractive because of their flexible non-parametric nature and computational simplicity. Treated within a Bayesian framework, very powerful statistical methods can be implemented which offer valid estimates of uncertainties in our predictions and generic model selection procedures cast as nonlinear optimization problems. Their main drawback of heavy computational scaling has recently been alleviated by the introduction of generic sparse approximations.13,78,31 The mathematical literature on GPs is large and often uses deep concepts which are not required to fully understand most machine learning applications. In this tutorial paper, we aim to present characteristics of GPs relevant to machine learning and to show up precise connections to other "kernel machines" popular in the community. Our focus is on a simple presentation, but references to more detailed sources are provided.},
+author = {Rasmussen, Carl E. and Williams, Christopher K. I.},
+file = {:Users/kumarharsha/Sem4/di-lab/RW.pdf:pdf},
+isbn = {026218253X},
+keywords = {2006,c,c 2006 massachusetts institute,e,gaussian processes for machine,gaussianprocess,gpml,i,isbn 026218253x,k,learning,of technology,org,rasmussen,the mit press,williams,www},
 mendeley-groups = {di-lab},
-title = {{A stable Gaussian radial basis function method for solving nonlinear unsteady convection–diffusion–reaction equations}},
-year = {2018}
+number = {2},
+pages = {69--106},
+publisher = {The MIT Press},
+title = {{Gaussian processes for machine learning.}},
+url = {http://www.gaussianprocess.org/gpml/chapters/RW.pdf},
+volume = {14},
+year = {2004}
 }
 @article{Platte2005,
 abstract = {We explore a connection between Gaussian radial basis functions and polynomials. Using standard tools of potential theory, we find that these radial functions are susceptible to the Runge phenomenon, not only in the limit of increasingly. at functions, but also in the finite shape parameter case. We show that there exist interpolation node distributions that prevent such phenomena and allow stable approximations. Using polynomials also provides an explicit interpolation formula that avoids the difficulties of inverting interpolation matrices, while not imposing restrictions on the shape parameter or number of points.},
@@ -34,25 +38,14 @@ mendeley-groups = {di-lab},
 title = {{Polynomials and potential theory for Gaussian radial basis function interpolation}},
 year = {2005}
 }
-@article{Fasshauer2012,
-archivePrefix = {arXiv},
-arxivId = {arXiv:1302.5877},
-author = {Fasshauer, Gregory E. and McCourt, Michael J.},
-doi = {10.1137/110824784},
-eprint = {arXiv:1302.5877},
-file = {:Users/kumarharsha/Sem4/di-lab/110824784.pdf:pdf},
-isbn = {0001405101},
-issn = {1064-8275},
-journal = {SIAM Journal on Scientific Computing},
-keywords = {10,1137,16m1063824,35l65,65c20,65l06,65m08,76p05,82c40,ams subject classifications,asymptotic preserving schemes,boltzmann equation,compressible navier,doi,equations,implicit-explicit linear multistep methods,stiff differential,stokes limit},
+@article{Calderhead2009,
+author = {Calderhead, Ben and Girolami, Mark and Lawrence, Neil D},
+file = {:Users/kumarharsha/Sem4/di-lab/2571d98c414cb5b605e502064a598e14ec9c.pdf:pdf},
+journal = {Advances in Neural Information Processing Systems 21},
 mendeley-groups = {di-lab},
-month = {jan},
-number = {2},
-pages = {A737--A762},
-title = {{Stable Evaluation of Gaussian Radial Basis Function Interpolants}},
-url = {http://epubs.siam.org/doi/10.1137/110824784},
-volume = {34},
-year = {2012}
+pages = {217--224},
+title = {{Accelerating Bayesian Inference over Nonlinear Differential Equations with Gaussian Processes}},
+year = {2009}
 }
 @article{Fornberg2011,
 abstract = {file:///Users/kumarharsha/Sem4/di-lab/110824784.pdf},
@@ -75,28 +68,51 @@ url = {http://epubs.siam.org/doi/10.1137/090750688 http://epubs.siam.org/doi/10.
 volume = {33},
 year = {2011}
 }
-@article{Yurova2017,
-abstract = {Gaussian radial basis functions can be an accurate basis for multivariate interpolation. In practise, high accuracies are often achieved in the flat limit where the interpolation matrix becomes increasingly ill-conditioned. Stable evaluation algorithms have been proposed by Fornberg, Larsson {\&} Flyer based on a Chebyshev expansion of the Gaussian basis and by Fasshauer {\&} McCourt based on a Mercer expansion with Hermite polynomials. In this paper, we propose another stabilization algorithm based on Hermite polynomials but derived from the generating function of Hermite polynomials. The new expansion does not require a complicated choice of parameters and offers a simple extension to high-dimensional tensor grids as well as a generalization for anisotropic multivariate basis functions using the Hagedorn generating function.},
+@article{Fasshauer2012,
 archivePrefix = {arXiv},
-arxivId = {1709.02164},
-author = {Yurova, Anna and Kormann, Katharina},
-eprint = {1709.02164},
-file = {:Users/kumarharsha/Library/Application Support/Mendeley Desktop/Downloaded/Yurova, Kormann - 2017 - STABLE EVALUATION OF GAUSSIAN RADIAL BASIS FUNCTIONS USING HERMITE POLYNOMIALS.pdf:pdf},
-journal = {ArXiv e-prints},
+arxivId = {arXiv:1302.5877},
+author = {Fasshauer, Gregory E. and McCourt, Michael J.},
+doi = {10.1137/110824784},
+eprint = {arXiv:1302.5877},
+file = {:Users/kumarharsha/Sem4/di-lab/110824784.pdf:pdf},
+isbn = {0001405101},
+issn = {1064-8275},
+journal = {SIAM Journal on Scientific Computing},
+keywords = {10,1137,16m1063824,35l65,65c20,65l06,65m08,76p05,82c40,ams subject classifications,asymptotic preserving schemes,boltzmann equation,compressible navier,doi,equations,implicit-explicit linear multistep methods,stiff differential,stokes limit},
 mendeley-groups = {di-lab},
-month = {sep},
-title = {{Stable evaluation of Gaussian radial basis functions using Hermite polynomials}},
-url = {https://arxiv.org/pdf/1709.02164.pdf http://arxiv.org/abs/1709.02164},
-year = {2017}
+month = {jan},
+number = {2},
+pages = {A737--A762},
+title = {{Stable Evaluation of Gaussian Radial Basis Function Interpolants}},
+url = {http://epubs.siam.org/doi/10.1137/110824784},
+volume = {34},
+year = {2012}
 }
-@article{Calderhead2009,
-author = {Calderhead, Ben and Girolami, Mark and Lawrence, Neil D},
-file = {:Users/kumarharsha/Sem4/di-lab/2571d98c414cb5b605e502064a598e14ec9c.pdf:pdf},
-journal = {Advances in Neural Information Processing Systems 21},
+@book{Powell2014,
+address = {Cambridge},
+author = {Lord, Gabriel J. and Powell, Catherine E. and Shardlow, Tony},
+doi = {10.1017/CBO9781139017329},
+file = {:Users/kumarharsha/Sem4/numuq/An Introduction to Computational Stochastic PDEs.pdf:pdf},
+isbn = {9781139017329},
 mendeley-groups = {di-lab},
-pages = {217--224},
-title = {{Accelerating Bayesian Inference over Nonlinear Differential Equations with Gaussian Processes}},
-year = {2009}
+pages = {520},
+publisher = {Cambridge University Press},
+title = {{An Introduction to Computational Stochastic PDEs}},
+url = {http://ebooks.cambridge.org/ref/id/CBO9781139017329},
+year = {2014}
+}
+@article{Neumann2015,
+abstract = {We introduce pyGPs, an objectoriented implementation of Gaussian processes (gps) for machine learning. The library provides a wide range of functionalities reaching from simple gp specification via mean and covariance and gp inference to more complex implementations of hyperparameter optimization, sparse approximations, and graph based learning. Using Python we focus on usability for both " users " and " researchers " . Our main goal is to offer a userfriendly and flexible implementation of gps for machine learning.},
+author = {Neumann, Marion and Huang, Shan and Marthaler, Daniel E and Kersting, Kristian},
+file = {:Users/kumarharsha/Sem4/di-lab/neumann15a.pdf:pdf},
+issn = {15337928},
+journal = {Journal of Machine Learning Research},
+keywords = {gaussian processes,python,regression and classification},
+mendeley-groups = {di-lab},
+pages = {26112616},
+title = {{pyGPs – A Python Library for Gaussian Process Regression and Classification}},
+volume = {16},
+year = {2015}
 }
 @article{Jidling2017,
 abstract = {We consider a modification of the covariance function in Gaussian processes to correctly account for known linear constraints. By modelling the target function as a transformation of an underlying function, the constraints are explicitly incorporated in the model such that they are guaranteed to be fulfilled by any sample drawn or prediction made. We also propose a constructive procedure for designing the transformation operator and illustrate the result on both simulated and real-data examples.},
@@ -114,46 +130,19 @@ title = {{Linearly constrained Gaussian processes}},
 url = {http://arxiv.org/abs/1703.00787},
 year = {2017}
 }
-@article{Neumann2015,
-abstract = {We introduce pyGPs, an objectoriented implementation of Gaussian processes (gps) for machine learning. The library provides a wide range of functionalities reaching from simple gp specification via mean and covariance and gp inference to more complex implementations of hyperparameter optimization, sparse approximations, and graph based learning. Using Python we focus on usability for both " users " and " researchers " . Our main goal is to offer a userfriendly and flexible implementation of gps for machine learning.},
-author = {Neumann, Marion and Huang, Shan and Marthaler, Daniel E and Kersting, Kristian},
-file = {:Users/kumarharsha/Sem4/di-lab/neumann15a.pdf:pdf},
-issn = {15337928},
-journal = {Journal of Machine Learning Research},
-keywords = {gaussian processes,python,regression and classification},
+@article{Yurova2017,
+abstract = {Gaussian radial basis functions can be an accurate basis for multivariate interpolation. In practise, high accuracies are often achieved in the flat limit where the interpolation matrix becomes increasingly ill-conditioned. Stable evaluation algorithms have been proposed by Fornberg, Larsson {\&} Flyer based on a Chebyshev expansion of the Gaussian basis and by Fasshauer {\&} McCourt based on a Mercer expansion with Hermite polynomials. In this paper, we propose another stabilization algorithm based on Hermite polynomials but derived from the generating function of Hermite polynomials. The new expansion does not require a complicated choice of parameters and offers a simple extension to high-dimensional tensor grids as well as a generalization for anisotropic multivariate basis functions using the Hagedorn generating function.},
+archivePrefix = {arXiv},
+arxivId = {1709.02164},
+author = {Yurova, Anna and Kormann, Katharina},
+eprint = {1709.02164},
+file = {:Users/kumarharsha/Library/Application Support/Mendeley Desktop/Downloaded/Yurova, Kormann - 2017 - STABLE EVALUATION OF GAUSSIAN RADIAL BASIS FUNCTIONS USING HERMITE POLYNOMIALS.pdf:pdf},
+journal = {ArXiv e-prints},
 mendeley-groups = {di-lab},
-pages = {26112616},
-title = {{pyGPs – A Python Library for Gaussian Process Regression and Classification}},
-volume = {16},
-year = {2015}
-}
-@book{Rasmussen2004,
-abstract = {Gaussian processes (GPs) are natural generalisations of multivariate Gaussian random variables to infinite (countably or continuous) index sets. GPs have been applied in a large number of fields to a diverse range of ends, and very many deep theoretical analyses of various properties are available. This paper gives an introduction to Gaussian processes on a fairly elementary level with special emphasis on characteristics relevant in machine learning. It draws explicit connections to branches such as spline smoothing models and support vector machines in which similar ideas have been investigated. Gaussian process models are routinely used to solve hard machine learning problems. They are attractive because of their flexible non-parametric nature and computational simplicity. Treated within a Bayesian framework, very powerful statistical methods can be implemented which offer valid estimates of uncertainties in our predictions and generic model selection procedures cast as nonlinear optimization problems. Their main drawback of heavy computational scaling has recently been alleviated by the introduction of generic sparse approximations.13,78,31 The mathematical literature on GPs is large and often uses deep concepts which are not required to fully understand most machine learning applications. In this tutorial paper, we aim to present characteristics of GPs relevant to machine learning and to show up precise connections to other "kernel machines" popular in the community. Our focus is on a simple presentation, but references to more detailed sources are provided.},
-author = {Rasmussen, Carl E. and Williams, Christopher K. I.},
-file = {:Users/kumarharsha/Sem4/di-lab/RW.pdf:pdf},
-isbn = {026218253X},
-keywords = {2006,c,c 2006 massachusetts institute,e,gaussian processes for machine,gaussianprocess,gpml,i,isbn 026218253x,k,learning,of technology,org,rasmussen,the mit press,williams,www},
-mendeley-groups = {di-lab},
-number = {2},
-pages = {69--106},
-publisher = {The MIT Press},
-title = {{Gaussian processes for machine learning.}},
-url = {http://www.gaussianprocess.org/gpml/chapters/RW.pdf},
-volume = {14},
-year = {2004}
-}
-@book{Powell2014,
-address = {Cambridge},
-author = {Lord, Gabriel J. and Powell, Catherine E. and Shardlow, Tony},
-doi = {10.1017/CBO9781139017329},
-file = {:Users/kumarharsha/Sem4/numuq/An Introduction to Computational Stochastic PDEs.pdf:pdf},
-isbn = {9781139017329},
-mendeley-groups = {di-lab},
-pages = {520},
-publisher = {Cambridge University Press},
-title = {{An Introduction to Computational Stochastic PDEs}},
-url = {http://ebooks.cambridge.org/ref/id/CBO9781139017329},
-year = {2014}
+month = {sep},
+title = {{Stable evaluation of Gaussian radial basis functions using Hermite polynomials}},
+url = {https://arxiv.org/pdf/1709.02164.pdf http://arxiv.org/abs/1709.02164},
+year = {2017}
 }
 @article{Raissi2017,
 abstract = {For more than two centuries, solutions of differential equations have been obtained either analytically or numerically based on typically well-behaved forcing and boundary conditions for well-posed problems. We are changing this paradigm in a fundamental way by establishing an interface between probabilistic machine learning and differential equations. We develop data-driven algorithms for general linear equations using Gaussian process priors tailored to the corresponding integro-differential operators. The only observables are scarce noisy multi-fidelity data for the forcing and solution that are not required to reside on the domain boundary. The resulting predictive posterior distributions quantify uncertainty and naturally lead to adaptive solution refinement via active learning. This general framework circumvents the tyranny of numerical discretization as well as the consistency and stability issues of time-integration, and is scalable to high-dimensions.},
@@ -196,4 +185,48 @@ title = {{Machine learning of linear differential equations using Gaussian proce
 url = {http://dx.doi.org/10.1016/j.jcp.2017.07.050},
 volume = {348},
 year = {2017}
+}
+@article{Rashidinia2018,
+abstract = {We investigate a novel method for the numerical solution of two-dimensional time-dependent convection–diffusion–reaction equations with nonhomogeneous boundary conditions. We first approximate the equation in space by a stable Gaussian radial basis function (RBF) method and obtain a matrix system of ODEs. The advantage of our method is that, by avoiding Kronecker products, this system can be solved using one of the standard methods for ODEs. For the linear case, we show that the matrix system of ODEs becomes a Sylvester-type equation, and for the nonlinear case we solve it using predictor–corrector schemes such as Adams–Bashforth and implicit–explicit (IMEX) methods. This work is based on the idea proposed in our previous paper (2016), in which we enhanced the expansion approach based on Hermite polynomials for evaluating Gaussian radial basis function interpolants. In the present paper the eigenfunction expansions are rebuilt based on Chebyshev polynomials which are more suitable in numerical computations. The accuracy, robustness and computational efficiency of the method are presented by numerically solving several problems.},
+author = {Rashidinia, J. and Khasi, M. and Fasshauer, G. E.},
+doi = {10.1016/j.camwa.2017.12.007},
+issn = {08981221},
+journal = {Computers and Mathematics with Applications},
+keywords = {Adams–Bashforth,Convection–diffusion–reaction equations,Eigenfunction expansion,Matrix system of ODEs,Radial basis functions,Robin boundary condition},
+mendeley-groups = {di-lab},
+title = {{A stable Gaussian radial basis function method for solving nonlinear unsteady convection–diffusion–reaction equations}},
+year = {2018}
+}
+@misc{Ratnani2018,
+author = {Ratnani, Ahmed and Harsha, Kumar and Grundner, Arthur and Wang, Kangkang},
+booktitle = {Github},
+mendeley-groups = {di-lab},
+title = {{Machine Learning for Hidden Physics and Partial Differential Equations}},
+url = {https://github.com/ratnania/mlhiphy},
+year = {2018}
+}
+@article{konzen2016numerical,
+abstract={In this paper we present a simple and accurate second order finite element scheme to simulate the Burgers' equation on the whole real line and subjected to initial conditions with compact support. The numerical simulations are performed by considering a sequence of auxiliary spatially dimensionless Dirichlet's problems parameterized by the domain's semidiameter L. Gaining advantage from the well-known convective-diffusive effects of the Burgers' equation, computations start by choosing L larger than the semidiameter of the support of the initial condition and, as solution diffuses out, L is increased appropriately. By direct comparisons between numerical and analytic solutions and its asymptotic behavior, we conclude this simple scheme is very accurate and can be applied to numerically investigate properties of this and similar equations on infinite domains.}
+title={Numerical simulations with the finite element method for the Burgers' equation on the real line},
+author={Konzen, Pedro Henrique de Almeida and Sauter, Esequia and de Azevedo, Fabio Souto and Zingano, Paulo Ricardo de {\'A}vila},
+journal={arXiv preprint arXiv:1605.01109},
+year={2016}
+}
+@article{lamoureux2006mathematics,
+abstract={We look at the mathematical theory of partial differential equations as applied to the 
+wave equation. In particular, we examine questions about existence and uniqueness of 
+solutions, and various solution techniques.}
+title={The mathematics of PDEs and the wave equation},
+author={Lamoureux, Michael P},
+journal={Seismic Imaging Summer School},
+year={2006}
+}
+@article{JMLR:v16:neumann15a,
+author  = {Neumann, Marion and Huang, Shan and Marthaler, Daniel E. and Kersting, Kristian},
+title   = {pyGPs -- A Python Library for Gaussian Process Regression and Classification},
+journal = {Journal of Machine Learning Research},
+year    = {2015},
+volume  = {16},
+pages   = {2611-2616},
+url     = {http://jmlr.org/papers/v16/neumann15a.html}
 }
