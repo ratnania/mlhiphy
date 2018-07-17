@@ -125,7 +125,7 @@ It is also called Radial Basis Function kernel (RBF kernel), or Gaussian kernel,
 
    k _ { \mathrm { SE } } \left( x , x ^ { \prime } \right) = \sigma ^ { 2 } \exp \left( - \frac { \left( x - x ^ { \prime } \right) ^ { 2 } } { 2 l ^ { 2 } } \right)
 
-The lengthscale :math:`l` determines the length of the "wiggles" in the function. The variance :math:`\sigma^{2}` determines the average distance of the function away from its mean. All the standard kernel has this parameter in front as a scale factor. 
+The lengthscale :math:`l` determines the width of the kernel; in other words, the larger :math:`l` is, the smoother the function is. The variance :math:`\sigma^{2}` determines the average distance of the function away from its mean. All the standard kernel has this parameter in front as a scale factor. 
 
 It has become the default kernel for GPs and pyGPs, and we have also chose this kernel for our project, which will be explain in the later section.
 
@@ -168,12 +168,9 @@ The linear kernel, unlike other kernels, has non-stationary covariance function,
 Our Choice
 +++++++++++++++
 
-Since our project is based on the Raissi's paper, so we also follow his choice of the kernel. The reason has been stated in his paper:
+Since our project is based on the Raissi's paper, so we also follow his choice of the kernel. The reason has been stated in his 2017 paper:
 
    In particular, the squared exponential covariance function chosen above implies smooth approximations. More complex function classes can be accommodated by appropriately choosing kernels. For example, non-stationary kernels employing nonlinear warpings of the input space can be constructed to capture discontinuous response. ::
-
-
-In the following chapter, we will see a simple case of solving a function parameter with different kernels. 
 
 
 
