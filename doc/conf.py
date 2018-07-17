@@ -136,7 +136,7 @@ latex_elements = {
 
     # Additional stuff for the LaTeX preamble.
     #
-    # 'preamble': '\\usepackage{wallpaper}',
+    'preamble': '\\setcounter{chapter}{-1}',
 
     # Latex figure (float) alignment
     #

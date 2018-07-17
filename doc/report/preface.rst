@@ -10,8 +10,8 @@ Using Gaussian Processes to create a framework shedding light on the optimal par
 This paper is based mostly on the research conducted by Raissi et al. :cite:`Raissi2017a`. In their paper, applications consist of a fractional equation, an integro-differential equation, a reaction-diffusion PDE and the Heat Equation. Whilst their code was written in Matlab, we implement their methodology in Python and by doing this, also making it more accessible.
 
 
-Notes regarding the contents
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Notes regarding the contents
+
 
 In order to retain comparability, in each chapter we will work with a set of points :math:`X` with elements in :math:`[0,1]^n` where n is the number of dimensions we are working with. We always use either 10 or 20 points with the corresponding function values :math:`(X,Y_u, Y_f)` as data samples. In this range, the estimates are good and the computation cost low. 
 
