@@ -143,7 +143,7 @@ Rational Quadratic Kernel
 
    k _ { \mathrm { RQ } } \left( x , x ^ { \prime } \right) = \sigma ^ { 2 } \left( 1 + \frac { \lVert x - x ^ { \prime } \rVert_2 ^ { 2 } } { 2 \alpha \ell ^ { 2 } } \right) ^ { - \alpha }
 
-This kernel is equivalent to adding together many RBF kernels with different length-scales, where GP priors should have functions which vary smoothly across many length-scales. If :math:`\alpha \rightarrow \infty`, then the RQ is identical to the RBF.
+This kernel is equivalent to adding together many RBF kernels with different length-scales, or can be seen as an infinite sum of RBF kernels. If :math:`\alpha \rightarrow \infty`, then the RQ is identical to the RBF.
 
 
 
@@ -169,15 +169,16 @@ Linear Kernel
    k _ { \mathrm { Lin } } \left( x , x ^ { \prime } \right) = \sigma^ { 2 } ( x - c )^T \left( x ^ { \prime } - c \right)
 
 
-The linear kernel, unlike other kernels, is a non-stationary covariance function, which means that it does not solely depend on :math:`x - x ^{ \prime }` . Thus by fixing the hyperparameters and moving the data, the model will yield different predictions. And :math:`c \in \mathbb{R}^d` determines the x-coordinate of the point that all the lines in the posterior go through.
+The linear kernel, unlike other kernels, is a non-stationary covariance function, which means that it does not solely depend on :math:`x - x ^{ \prime }` . Thus by fixing the hyperparameters and moving the data, the model will yield different predictions. 
 
 Our Choice
 +++++++++++++++
 
-Since our project is based on the Raissi's paper, so we also follow his choice of the kernel. The reason has been stated in his 2017 paper:
+Since our project is mainly based on the Raissi's paper, so we also follow his choice of the kernel. The reason has been stated in his 2017 paper:
 
    In particular, the squared exponential covariance function chosen above implies smooth approximations. More complex function classes can be accommodated by appropriately choosing kernels. For example, non-stationary kernels employing nonlinear warpings of the input space can be constructed to capture discontinuous response. ::
 
+We have used the pyGPs package to test the kernels written above and customized kernels (See our project on GitHub). It seems that the RBF kernels work for most functions at hand. 
 
 
 
