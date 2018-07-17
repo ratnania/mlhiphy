@@ -6,7 +6,7 @@ Regularity of Stochastic Processes
 
 **Definition** (mean-square continuity):
 
-   Let :math:`\{ X ( t ) : t \in \mathcal { T } \}` be a mean-zero process. The kernel :math:`k` is *continuous* at :math:`(t,t)` if and only if :math:`\mathbb { E } \left[ ( X ( t + h ) - X ( t ) ) ^ { 2 } \right] \rightarrow 0` as :math:`h \rightarrow 0`. In particular, if :math:`k \in \mathrm { C } ( \mathcal { T } \times \mathcal { T } )`, then :math:`\{ X ( t ) : t \in \mathcal { T } \}` is mean-square continuous.
+   Let :math:`\{ X ( t ) : t \in \mathcal { T } \}` be a mean-zero process. The kernel :math:`k` is continuous in :math:`(t,t)` if and only if :math:`\mathbb { E } \left[ ( X ( t + h ) - X ( t ) ) ^ { 2 } \right] \rightarrow 0` as :math:`h \rightarrow 0`. In particular, if :math:`k \in \mathrm { C } ( \mathcal { T } \times \mathcal { T } )`, then :math:`\{ X ( t ) : t \in \mathcal { T } \}` is *mean-square continuous*.
 
 **Definition** (mean-square derivative):
 
