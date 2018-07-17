@@ -6,7 +6,7 @@ Regularity of Stochastic Processes
 
 **Definition** (mean-square continuity):
 
-   Let :math:`\{ X ( t ) : t \in \mathcal { T } \}` be a mean-zero process. The kernel :math:`k` is continuous at :math:`(t,t)` if and only if :math:`\mathbb { E } \left[ ( X ( t + h ) - X ( t ) ) ^ { 2 } \right] \rightarrow 0` as :math:`h \rightarrow 0`. In particular, if :math:`k \in \mathrm { C } ( \mathcal { T } \times \mathcal { T } )`, then :math:`\{ X ( t ) : t \in \mathcal { T } \}` is mean-square continuous.
+   Let :math:`\{ X ( t ) : t \in \mathcal { T } \}` be a mean-zero process. The kernel :math:`k` is *continuous* at :math:`(t,t)` if and only if :math:`\mathbb { E } \left[ ( X ( t + h ) - X ( t ) ) ^ { 2 } \right] \rightarrow 0` as :math:`h \rightarrow 0`. In particular, if :math:`k \in \mathrm { C } ( \mathcal { T } \times \mathcal { T } )`, then :math:`\{ X ( t ) : t \in \mathcal { T } \}` is mean-square continuous.
 
 **Definition** (mean-square derivative):
 
@@ -37,7 +37,7 @@ With a similar approach and setting as the previous theorem, we can calculate th
 
       \operatorname { Cov } ( X ( s ), & \frac { X ( t + h ) - X ( t ) } { h } ) = \frac { 1 } { h } \mathbb { E } [ ( X ( s ) ) ( X ( t + h ) - X ( t ) ) ] = \frac { 1 } { h } ( k ( s, t + h ) - k ( s , t ) )
 
-   The right hand side converges to :math:`\frac{\partial}{\partial t}k(s,t)` as :math:`h \rightarrow 0`.
+The right hand side converges to :math:`\frac{\partial}{\partial t}k(s,t)` as :math:`h \rightarrow 0`.
 
 
 
@@ -48,14 +48,29 @@ With a similar approach and setting as the previous theorem, we can calculate th
 
 **Theorem** (mean-square regularity):
 
-   Let :math:`u(x)` be a mean-zero second-order random field. If the kernel :math:`k \in C(D × D)`, then :math:`u(x)` is mean-square continuous so that :math:`\| u ( \mathbf{x} + \mathbf{h} ) - u ( \mathbf{x} ) \| _ { L ^ { 2 } ( \Omega ) } \rightarrow 0` as :math:`h \rightarrow 0 \forall x \in D`. If :math:`k \in C^2(D \times D)`,then :math:`u(x)` is mean-square differentiable. That is, a random field :math:`\frac { \partial u ( x ) } { \partial x _ { i } }` exists such that
+   Let :math:`u(x)` be a mean-zero second-order random field. If the kernel :math:`k \in C(D \times D)`, then :math:`u(x)` is mean-square continuous so that :math:`\| u ( \mathbf{x} + \mathbf{h} ) - u ( \mathbf{x} ) \| _ { L ^ { 2 } ( \Omega ) } \rightarrow 0` as :math:`h \rightarrow 0 \; \forall x \in D`. If :math:`k \in C^2(D \times D)`, then :math:`u(x)` is mean-square differentiable. That is, a random field :math:`\frac { \partial u ( x ) } { \partial x _ { i } }` exists such that
 
    .. math::
 
       \| \frac { u \left( \mathbf { x } + h e _ { i } \right) - u ( \mathbf { x } ) } { h } - \frac { \partial u ( \mathbf { x } ) } { \partial x _ { i } } \| _ { L ^ { 2 } ( \Omega ) } \rightarrow 0 \quad \text { as } h \rightarrow 0
     
-   and :math:`\frac { \partial u ( x ) } { \partial x _ { i } }` has kernel :math:`k _ { i } ( x , y ) = \frac { \partial ^ { 2 } C ( x , y ) } { \partial x _ { i } \partial y _ { i } }`.
+   and :math:`\frac { \partial u ( x ) } { \partial x _ { i } }` has the kernel :math:`k _ { i } ( x , y ) = \frac { \partial ^ { 2 } C ( x , y ) } { \partial x _ { i } \partial y _ { i } }`.
+
+
+Especially this theorem tells us, how zero-mean Gaussian Processes transform, when taking derivatives. Raissi describes in his paper, that the following even holds for general linear transformations :cite:`Raissi2017a`:
+
+Let :math:`u \sim GP(0, k_{uu})` and :math:`\mathcal{L}_x` be a linear transformation. Then for :math:`f = \mathcal{L}_x u` it holds:
+1. :math:`f \sim GP(0, k_{ff})`
+2. The covariance function of :math:`f` is given by :math:`k_{ff} = \mathcal{L}_{x}\mathcal{L}_{x'}k_{uu}`.
+3. The covariance between :math:`u(x)` and :math:`f(x')` is given by :math:`k_{uf} = \mathcal{L}_{x'}k_{uu}`, whereas
+   the covariance between :math:`f(x)` and :math:`u(x')` is given by :math:`k_{fu} = \mathcal{L}_x k_{uu}`.
 
 
 
-Description of covariance transformations
+
+
+
+
+
+
+
