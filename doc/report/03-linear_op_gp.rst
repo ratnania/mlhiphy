@@ -60,10 +60,12 @@ The right hand side converges to :math:`\frac{\partial}{\partial t}k(s,t)` as :m
 Especially this theorem tells us, how zero-mean Gaussian Processes transform, when taking derivatives. Raissi describes in his paper, that the following even holds for general linear transformations :cite:`Raissi2017a`:
 
 Let :math:`u \sim GP(0, k_{uu})` and :math:`\mathcal{L}_x` be a linear transformation. Then for :math:`f = \mathcal{L}_x u` it holds:
+
 1. :math:`f \sim GP(0, k_{ff})`
+
 2. The covariance function of :math:`f` is given by :math:`k_{ff} = \mathcal{L}_{x}\mathcal{L}_{x'}k_{uu}`.
-3. The covariance between :math:`u(x)` and :math:`f(x')` is given by :math:`k_{uf} = \mathcal{L}_{x'}k_{uu}`, whereas
-   the covariance between :math:`f(x)` and :math:`u(x')` is given by :math:`k_{fu} = \mathcal{L}_x k_{uu}`.
+
+3. The covariance between :math:`u(x)` and :math:`f(x')` is given by :math:`k_{uf} = \mathcal{L}_{x'}k_{uu}`, whereas the covariance between :math:`f(x)` and :math:`u(x')` is given by :math:`k_{fu} = \mathcal{L}_x k_{uu}`.
 
 
 
