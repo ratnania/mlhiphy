@@ -111,6 +111,8 @@ The following definitions and theorems are to introduce the concept of Gaussian 
 
    A *Gaussian random field* :math:`\{ u ( x ) : x \in D \}` is a second-order random field such that :math:`u = \left[ u \left( x _ { 1 } \right) , u \left( x _ { 2 } \right) , \ldots , u \left( x _ { M } \right) \right] ^ { T }` follows the multivariate Gaussian distribution for any :math:`x _ { 1 } , \ldots , x _ { M } \in D` and any :math:`M \in \mathbb { N }`. We denote it here as :math:`\mathbf { u } \sim \mathbf { GP } ( \mathbf { \mu } , k )` where :math:`\mu _ { i } = \mu \left( x _ { i } \right)` and :math:`k _ { i j } = k \left( x _ { i } , x _ { j } \right)`.
    
+An important thing to note is, that by sampling an element :math:`u` from a Gaussian Process, we are thereby sampling a set of function values for the points in the domain :math:`D` and can thus view :math:`u` as a function itself. 
+
 Since we will deal with different dimensions throughout the text, we will use the term '(Gaussian) process' for both of these cases to improve readability.
 
 
