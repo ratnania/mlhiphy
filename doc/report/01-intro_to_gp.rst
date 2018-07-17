@@ -12,7 +12,7 @@ The univariate Gaussian (normal) distribution has a probability density given by
 
    p ( x; \mu, \sigma ) = \frac { 1 } { \sqrt { 2 \pi } \sigma } \exp \left\{ - \frac { 1 } { 2 \sigma ^ { 2 } } ( x - \mu ) ^ { 2 } \right\},
 
-where :math:`x, \mu, \sigma \in \mathbb{R}`. If a random variable is Gaussian distributed with mean :math:`\mu` and variance :math:`\sigma`, we commonly write :math:`X \sim \mathcal{N}(\mu, \sigma)`.
+where :math:`x, \mu, \sigma \in \mathbb{R}`. If a random variable X is Gaussian distributed with mean :math:`\mu` and variance :math:`\sigma`, we commonly write :math:`X \sim \mathcal{N}(\mu, \sigma)`.
 
 If :math:`Y \sim \mathcal{N}(\mu, \sigma)` and :math:`\alpha \in \mathbb{R}`, then
 
@@ -72,7 +72,7 @@ The following definitions and theorems are to introduce the concept of Gaussian 
 
 **Definition** (Stochastic process):
 
-    Given a set :math:`\mathcal{T} \subset \mathbb{R}`, a measurable space  :math:`( H , \mathcal{H} )`, and a probability space :math:`(\Omega, \mathcal{F}, \mathbb{P})`, an *:math:`H`-valued stochastic process* is a set of :math:`H`-valued random variables :math:`\{X(t): t \in \mathcal{T}\}`. We simply write :math:`X(t)` to denote the process. To emphasize the dependence on :math:`\omega` and that :math:`X : \mathcal{T} \times \Omega \rightarrow \mathbb{R}`, we may write :math:`X(t,\omega)`.
+    Given a set :math:`\mathcal{T} \subset \mathbb{R}`, a measurable space  :math:`( H , \mathcal{H} )`, and a probability space :math:`(\Omega, \mathcal{F}, \mathbb{P})`, an :math:`H`*-valued stochastic process* is a set of :math:`H`-valued random variables :math:`\{X(t): t \in \mathcal{T}\}`. We simply write :math:`X(t)` to denote the process. To emphasize the dependence on :math:`\omega` and that :math:`X : \mathcal{T} \times \Omega \rightarrow \mathbb{R}`, we may write :math:`X(t,\omega)`.
 
 **Definition** (Second-order process):
 
@@ -109,8 +109,10 @@ The following definitions and theorems are to introduce the concept of Gaussian 
 
 **Definition** (Gaussian random field):
 
-   A *Gaussian random field* :math:`\{ u ( x ) : x \in D \}` is a second-order random field such that :math:`u = \left[ u \left( x _ { 1 } \right) , u \left( x _ { 2 } \right) , \ldots , u \left( x _ { M } \right) \right] ^ { T }` follows the multivariate Gaussian distribution for any :math:`x _ { 1 } , \ldots , x _ { M } \in D` and any :math:`M \in \mathbb { N }`. We denote it here as :math:`\mathbf { u } \sim \mathbf { GP } ( \mathbf { \mu } , k )` where :math:`\mu _ { i } = \mu \left( x _ { i } \right)` and :math:`k _ { i j } = k \left( x _ { i } , x _ { j } \right)`.
+   A *Gaussian random field* :math:`\{u(x):x\in D\}` is a second-order random field such that :math:`u = \left[ u \left( x _ { 1 } \right) , u \left( x _ { 2 } \right) , \ldots , u \left( x _ { M } \right) \right] ^ { T }` follows the multivariate Gaussian distribution for any :math:`x _ { 1 } , \ldots , x _ { M } \in D` and any :math:`M \in \mathbb { N }`. We denote it here as :math:`\mathbf { u } \sim \mathbf { GP } ( \mathbf { \mu } , k )` where :math:`\mu _ { i } = \mu \left( x _ { i } \right)` and :math:`k _ { i j } = k \left( x _ { i } , x _ { j } \right)`.
    
+An important thing to note is, that by sampling an element :math:`u` from a Gaussian Process, we are thereby sampling a set of function values for the points in the domain :math:`D` and can thus view :math:`u` as a function itself. 
+
 Since we will deal with different dimensions throughout the text, we will use the term '(Gaussian) process' for both of these cases to improve readability.
 
 
@@ -141,7 +143,7 @@ Rational Quadratic Kernel
 
    k _ { \mathrm { RQ } } \left( x , x ^ { \prime } \right) = \sigma ^ { 2 } \left( 1 + \frac { \lVert x - x ^ { \prime } \rVert_2 ^ { 2 } } { 2 \alpha \ell ^ { 2 } } \right) ^ { - \alpha }
 
-This kernel is equivalent to adding together many RBF kernels with different length-scales, where GP priors should have functions which vary smoothly across many length-scales. If :math:`\alpha \rightarrow \infty`, then the RQ is identical to the RBF.
+This kernel is equivalent to adding together many RBF kernels with different length-scales, or can be seen as an infinite sum of RBF kernels. If :math:`\alpha \rightarrow \infty`, then the RQ is identical to the RBF.
 
 
 
@@ -167,15 +169,16 @@ Linear Kernel
    k _ { \mathrm { Lin } } \left( x , x ^ { \prime } \right) = \sigma^ { 2 } ( x - c )^T \left( x ^ { \prime } - c \right)
 
 
-The linear kernel, unlike other kernels, is a non-stationary covariance function, which means that it does not solely depend on :math:`x - x ^{ \prime }` . Thus by fixing the hyperparameters and moving the data, the model will yield different predictions. And :math:`c \in \mathbb{R}^d` determines the x-coordinate of the point that all the lines in the posterior go through.
+The linear kernel, unlike other kernels, is a non-stationary covariance function, which means that it does not solely depend on :math:`x - x ^{ \prime }` . Thus by fixing the hyperparameters and moving the data, the model will yield different predictions. 
 
 Our Choice
 +++++++++++++++
 
-Since our project is based on the Raissi's paper, so we also follow his choice of the kernel. The reason has been stated in his 2017 paper:
+Since our project is mainly based on the Raissi's paper, so we also follow his choice of the kernel. The reason has been stated in his 2017 paper:
 
    In particular, the squared exponential covariance function chosen above implies smooth approximations. More complex function classes can be accommodated by appropriately choosing kernels. For example, non-stationary kernels employing nonlinear warpings of the input space can be constructed to capture discontinuous response. ::
 
+We have used the pyGPs package to test the kernels written above and customized kernels (See our project on GitHub). It seems that the RBF kernels work for most functions at hand. 
 
 
 
