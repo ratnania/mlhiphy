@@ -10,7 +10,7 @@ Regularity of Stochastic Processes
 
 **Definition** (mean-square derivative):
 
-   A process :math:`\{ X ( t ) : t \in \mathcal { T } \}` is mean-square differentiable with mean-square derivative :math:`\frac { d X ( t ) } { d t }` if, for all :math:`t \in \mathcal { T }`, we have as :math:`h \rightarrow 0`
+   A process :math:`\{ X ( t ) : t \in \mathcal { T } \}` is *mean-square differentiable* with *mean-square derivative* :math:`\frac { d X ( t ) } { d t }` if, for all :math:`t \in \mathcal { T }`, we have as :math:`h \rightarrow 0`
 
    :math:`\| \frac { X ( t + h ) - X ( t ) } { h } - \frac { d X ( t ) } { d t } \| _ { L ^ { 2 } ( \Omega ) } = \mathbb { E } \left[ | \frac { X ( t + h ) - X ( t ) } { h } - \frac { d X ( t ) } { d t } | ^ { 2 } \right] ^ { 1 / 2 } \rightarrow 0`.
 
@@ -28,10 +28,10 @@ Regularity of Stochastic Processes
         &= \frac { 1 } { h_s h_t } ( k ( s + h_s , t + h_t ) - k ( s + h_s , t ) - k ( s , t + h_t ) + k ( s , t ) )
 
    
-   A simple calculation with Taylor series shows that the right-hand side converges to :math:`\frac { \partial ^ { 2 } k ( s , t ) } { \partial s \partial t }` as :math:`h_s,h_t \rightarrow 0`.
+   A simple calculation with the Taylor series shows that the right-hand side converges to :math:`\frac { \partial ^ { 2 } k ( s , t ) } { \partial s \partial t }` as :math:`h_s,h_t \rightarrow 0`.
 
 
-With a similar approach and setting as the previous theorem, we can calculate the covariance between a Gaussian process and it's mean-square derivative.
+With a similar approach and setting as in the previous theorem, we can calculate the covariance between a Gaussian process and its mean-square derivative.
 
    .. math::
 
