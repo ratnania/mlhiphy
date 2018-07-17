@@ -129,7 +129,7 @@ It is also called Radial Basis Function kernel (RBF kernel), or Gaussian kernel,
 
 .. math::
 
-   k _ { \mathrm { SE } } \left( x , x ^ { \prime } \right) = \sigma ^ { 2 } \exp \left( - \frac { \lVert x - x ^ { \prime } \rVert_2) ^ { 2 } } { 2 l ^ { 2 } } \right)
+   k _ { \mathrm { SE } } \left( x , x ^ { \prime } \right) = \sigma ^ { 2 } \exp \left( - \frac { \lVert x - x ^ { \prime } \rVert_2 ^ { 2 } } { 2 l ^ { 2 } } \right)
 
 The *length-scale* :math:`l` determines the width of the kernel; in other words, the larger :math:`l` is, the smoother the function is. The *signal variance* :math:`\sigma^{2}` controls the variance of the sampled functions. All the standard kernels have this parameter in front as a scale factor. 
 
@@ -178,7 +178,7 @@ Since our project is mainly based on the Raissi's paper, so we also follow his c
 
    In particular, the squared exponential covariance function chosen above implies smooth approximations. More complex function classes can be accommodated by appropriately choosing kernels. For example, non-stationary kernels employing nonlinear warpings of the input space can be constructed to capture discontinuous response. ::
 
-We have used the pyGPs package to test the kernels written above and customized kernels (See our project on GitHub). It seems that the RBF kernels work for most functions at hand. 
+We have used the pyGPs package to test the kernels written above and customized kernels (see our project on GitHub). It seems that the RBF kernels work for most functions at hand. 
 
 
 
