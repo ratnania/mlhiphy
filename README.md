@@ -59,8 +59,6 @@ In https://github.com/Slowpuncher24/mlhiphy_v2 you can find a considerably impro
 * The implementation and tests of using the Matérn-5/2-kernel, which is the most promising alternative to the SE kernel.
 * The implementation and tests of a viable alternative to the Nelder-Mead optimization algorithm, namely a variant of the nonlinear conjugate gradient method (it is scipy's implementation up to a minor tweak to the line search algorithm).
 
-The performance of other popular optimization algorithms like LBFGS-B and stochastic gradient descent algorithms was tested but turned out to be deficient.
-
 
 
 
